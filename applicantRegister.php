@@ -33,6 +33,12 @@
 
                 <form>
 
+                <div class="form-outline mb-4">
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                  <option selected>Select Organization</option>
+                </select>
+                  </div>
+
                   <div class="form-outline mb-4">
                     <input
                     type="text"
