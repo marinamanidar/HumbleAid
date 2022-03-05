@@ -2,10 +2,22 @@ body{
     background-size: cover;
     background-attachment: fixed;
     font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 10%;
 }
 
 .manage{
     margin-top: 10%;
+    margin-left: 20%;
+    margin-right: 20%;
+    background: rgb(236, 219, 235);
+    padding: 30px;
+    box-shadow: 0px 1px 20px 1px rgb(15, 15, 15);
+    border-radius: 5px;
+}
+
+.manages{
+    margin-top: 10%;
+    margin-bottom: 10%;
     margin-left: 20%;
     margin-right: 20%;
     background: rgb(236, 219, 235);
@@ -25,6 +37,10 @@ body{
     border: none;
     width: 100%;
     
+}
+
+h2{
+    text-align: center;
 }
 
 .label{
