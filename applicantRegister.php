@@ -14,10 +14,10 @@
 
   <nav class="navbar fixed-top" style="background-color: #507daf;">
   <div class="container-fluid">
-    <a class="navbar-brand" >Humble Aid </a>
+    <a class="navbar-brand" style="color:white" >Humble Aid </a>
     <form class="d-flex">
-        <p style="padding: 0px 50px;">John</p>
-      <button class="btn" type="submit">Log Out</button>
+      <p style="margin: 5px; padding: 5px; color:white;">John Doe</p>
+      <button class="btn logoutbtn" type="submit">Log Out</button>
     </form>
   </div>
 </nav>
@@ -45,7 +45,6 @@
 
                   <div class="form-outline mb-4">
                     <input type="text" id="typeText" class="form-control" placeholder="123456-01-1254"/>
-                    <label class="form-label" for="typeText"></label>
                   </div>
 
                   <div class="input-group mb-3">
@@ -56,8 +55,31 @@
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                    <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                    <textarea class="form-control" id="textAreaExample" rows="4" placeholder="Address"></textarea>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                  <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">RM</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Amount" placeholder="1000.00">
+                </div>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                  <div class="input-group mb-3">
+                    <div class="form-outline">
+                    <input class="form-control" type="file" id="formFileMultiple" multiple placeholder="Documents"/>
+                    </div>
+                    </div>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                  <div class="form-outline">
+                  <textarea class="form-control" id="textAreaExample" rows="4" placeholder="Description"></textarea>
+                  <label class="form-label" for="textAreaExample"></label>
+                  </div>
                   </div>
 
                   <div class="d-flex justify-content-center">
