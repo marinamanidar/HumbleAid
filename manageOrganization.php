@@ -81,8 +81,9 @@ require_once "manageOrgInformation.php";
                 </div>
             </from>
         </div>
-        <div  class="manage">
+        <div  class="manages">
             <form class="form" method="POST">
+                <h2>Add New Organization Representative</h2>
                 <!--admin page username-->
                 <div class="form-group">
                     <label class="label">Username</label>
