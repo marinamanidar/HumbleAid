@@ -1,14 +1,41 @@
 <?php
-   include("connection.php");
+
+    include("connection.php");
 
     if (isset($_POST['register'])) {
-        //$cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']); 
-        $IDno = $_POST['IDno'];
-        $email = $_POST['email'];
+        //$cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
+        $fullname = $_POST['fullname'];
+        $username = str_replace(' ', '', $fullname);
+        $comb = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $shfl = str_shuffle($comb);
+        $password = substr($shfl,0,10);
 
-        $sqluser = "INSERT INTO 'user' ('username', 'password', 'fullname', 'email', 'mobileNo') VALUES ('$_POST[fullname]', '$_POST[fullname]', '$_POST[fullname]', '$email', '$_POST[mobile]')";
-        $sqlapplicant = "INSERT INTO 'applicant' ('username', 'IDno', 'applicantAddress', 'householdIncome') VALUES ('$_POST[fullname]', '$IDno', '$_POST[applicantAddress]', '$_POST[householdincome]')";
-
+        $sqluser = "INSERT INTO user (username, password, fullname, email, mobileNo) VALUES ('$username', '$password', '$_POST[fullname]', '$_POST[email]', '$_POST[mobileNo]')";
+        $sqlapplicant = "INSERT INTO applicant (username, IDno, applicantAddress, householdIncome) VALUES ('$username', '$_POST[IDno]', '$_POST[applicantAddress]', '$_POST[householdIncome]')";
+        $sqldocument = "INSERT INTO document (documentID, filename, description, username) VALUES document ('$_POST[documentID]', '$_POST[document]', '$_POST[description]', '$username')";
+          if($save = mysqli_query($conn, $sqluser) && $save2 = mysqli_query($conn,$sqlapplicant) && $save3 = mysqli_query($conn,$sqldocumen)){
+?>
+            <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+<?php
+        }
     }
 ?>
 
@@ -50,7 +77,7 @@
 <div class="content" style="padding-top: 100px;">
 <h1 class="display-4">Add Aid Applicants</h1>
 
-<form class="form" method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+<form class="form" method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
 
 <div class="input-group mb-3">
   <input
@@ -58,6 +85,7 @@
     class="form-control"
     placeholder="John Doe"
     name = "fullname"
+    id="fullname"
     aria-label="Full Name"
     aria-describedby="basic-addon1"
   />
@@ -76,7 +104,7 @@
 </div>
 
 <div class="form-outline">
-  <input type="text" class="form-control" name="IDno" placeholder="123456-01-1254"/>
+  <input type="text" class="form-control" id="IDno" name="IDno" placeholder="123456-01-1254"/>
   <label class="form-label" for="typeText"></label>
 </div>
 
@@ -84,11 +112,11 @@
   <div class="input-group-prepend">
     <span class="input-group-text">+60</span>
   </div>
-  <input type="text" class="form-control" name="mobileNo" placeholder="0123345622" />
+  <input type="text" class="form-control" id="mobileNo" name="mobileNo" placeholder="0123345622" />
 </div>
 
 <div class="form-outline">
-  <textarea class="form-control" rows="4" name="applicantAddress" placeholder="Address"></textarea>
+  <textarea class="form-control" rows="4" id="applicantAddress" name="applicantAddress" placeholder="Address"></textarea>
   <label class="form-label" for="textAreaExample"></label>
 </div>
 
@@ -96,26 +124,26 @@
   <div class="input-group-prepend">
     <span class="input-group-text">RM</span>
   </div>
-  <input type="text" class="form-control" aria-label="Amount" name="householdincome" placeholder="1000.00">
+  <input type="text" class="form-control" aria-label="Amount" id="householdIncome" name="householdIncome" placeholder="1000.00">
 </div>
 
 <div class="input-group mb-3">
 <div class="form-outline">
-<input class="form-control" type="file" name="document" multiple placeholder="Documents"/>
+<input class="form-control" type="file" id="document" name="document" multiple placeholder="Documents"/>
 </div>
 </div>
 
 <div class="form-outline">
-  <textarea class="form-control" rows="4" name="description" placeholder="Description"></textarea>
+  <textarea class="form-control" rows="4" id="description" name="description" placeholder="Description"></textarea>
   <label class="form-label" for="textAreaExample"></label>
 </div>
     <!-- Tab content -->
   </div>
 </div>
 
-<button type="submit" name="register" class="btn btn-primary btn-lg btn-block" style="background-color: #507daf;">Register</button>
+<button type="submit" id="register" name="register" class="btn btn-primary btn-lg btn-block" style="background-color: #507daf;">Register</button>
 
-</from>
+</form>
 
 <!-- Page content -->
 

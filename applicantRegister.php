@@ -1,33 +1,35 @@
 <?php
-$sname= "localhost";
-$unmae= "root";
-$password = "";
-$db_name = "humbleaid";
 
-$conn = mysqli_connect($sname, $unmae, $password, $db_name);
-
-if (!$conn) {
-    echo "Connection failed!";
-}
+    include("connection.php");
 
     if (isset($_POST['register'])) {
+        //set input into variables
+        $email= $_POST['email'];
+        //get row with the same email
+        $sqlemail = "SELECT * FROM user WHERE email='$email'";
+        $res = mysqli_query($conn,$sqlemail);
+        //if the email entered is already registered then send alert
+        if(mysqli_num_rows($res) > 0){
+        echo '<script>alert("Email already registered!")</script>';
+        }
+        else{
         //$cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
-        $username = $_POST['fullname'];
-        $password = $_POST['password'];
         $fullname = $_POST['fullname'];
-        $email = $_POST['email'];
-        $mobileNo = $_POST['mobileNo'];
-        $IDno = $_POST['IDno'];
-        $applicantAddress = $_POST['applicantAddress'];
-        $householdIncome = $_POST['householdIncome'];
+        $username = str_replace(' ', '', $fullname);
+        $comb = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $shfl = str_shuffle($comb);
+        $password = substr($shfl,0,10);
 
-        $sqluser = "INSERT INTO 'user' ('username', 'password', 'fullname', 'email', 'mobileNo') VALUES ('$fullname', '$fullname', '$fullname', '$email', '$mobileNo')";
-        $sqlapplicant = "INSERT INTO 'applicant' ('username', 'IDno', 'applicantAddress', 'householdIncome') VALUES ('$fullname', '$IDno', '$applicantAddress', '$householdIncome')";
-     
-        $save = mysqli_query($conn, $sqluser);
-        $save2 = mysqli_query($conn,$sqlapplicant);
-    }
+        $sqluser = "INSERT INTO user (username, password, fullname, email, mobileNo) VALUES ('$username', '$password', '$_POST[fullname]', '$_POST[email]', '$_POST[mobileNo]')";
+        $sqlapplicant = "INSERT INTO applicant (username, IDno, applicantAddress, householdIncome) VALUES ('$_POST[fullname]', '$_POST[IDno]', '$_POST[applicantAddress]', '$_POST[householdIncome]')";
+          if($save = mysqli_query($conn, $sqluser) && $save2 = mysqli_query($conn,$sqlapplicant) && $save3 = mysqli_query($conn,$sqldocument)){
 ?>
+            <p>
+              <?php echo "<script>setTimeout(\"location.href = 'applicantDashboard.php';\",1500);</script>"; ?>
+            </p>
+        }
+    }
+
 
 <!doctype html>
 <html lang="en">
@@ -87,7 +89,7 @@ if (!$conn) {
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="text" id="email" name="email" class="form-control" placeholder="johndoe@gmail.com"/>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="johndoe@gmail.com"/>
                   </div>
 
                   <div class="input-group mb-3">
