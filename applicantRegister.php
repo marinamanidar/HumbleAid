@@ -1,3 +1,34 @@
+<?php
+$sname= "localhost";
+$unmae= "root";
+$password = "";
+$db_name = "humbleaid";
+
+$conn = mysqli_connect($sname, $unmae, $password, $db_name);
+
+if (!$conn) {
+    echo "Connection failed!";
+}
+
+    if (isset($_POST['register'])) {
+        //$cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
+        $username = $_POST['fullname'];
+        $password = $_POST['password'];
+        $fullname = $_POST['fullname'];
+        $email = $_POST['email'];
+        $mobileNo = $_POST['mobileNo'];
+        $IDno = $_POST['IDno'];
+        $applicantAddress = $_POST['applicantAddress'];
+        $householdIncome = $_POST['householdIncome'];
+
+        $sqluser = "INSERT INTO 'user' ('username', 'password', 'fullname', 'email', 'mobileNo') VALUES ('$fullname', '$fullname', '$fullname', '$email', '$mobileNo')";
+        $sqlapplicant = "INSERT INTO 'applicant' ('username', 'IDno', 'applicantAddress', 'householdIncome') VALUES ('$fullname', '$IDno', '$applicantAddress', '$householdIncome')";
+     
+        $save = mysqli_query($conn, $sqluser);
+        $save2 = mysqli_query($conn,$sqlapplicant);
+    }
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -31,7 +62,7 @@
               <div class="card-body p-5">
                 <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-                <form>
+                <form class="form" method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
 
                 <div class="form-outline mb-4">
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example">
@@ -44,24 +75,30 @@
                     type="text"
                     class="form-control"
                     placeholder="John Doe"
+                    name="fullname"
+                    id="fullname"
                     aria-label="Full Name"
                     aria-describedby="basic-addon1"
                   />
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="text" id="typeText" class="form-control" placeholder="123456-01-1254"/>
+                    <input type="text" id="IDno" name="IDno" class="form-control" placeholder="123456-01-1254"/>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="text" id="email" name="email" class="form-control" placeholder="johndoe@gmail.com"/>
                   </div>
 
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text">+60</span>
                     </div>
-                    <input type="text" id="typeText" class="form-control" placeholder="123345622" />
+                    <input type="text" id="mobileNo" name="mobileNo" class="form-control" placeholder="123345622" />
                   </div>
 
                   <div class="form-outline mb-4">
-                    <textarea class="form-control" id="textAreaExample" rows="4" placeholder="Address"></textarea>
+                    <textarea class="form-control" id="applicantAddress" name="applicantAddress" rows="4" placeholder="Address"></textarea>
                   </div>
 
                   <div class="form-outline mb-4">
@@ -69,27 +106,27 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">RM</span>
                   </div>
-                  <input type="text" class="form-control" aria-label="Amount" placeholder="1000.00">
+                  <input type="text" class="form-control" id="householdIncome" name="householdIncome" aria-label="Amount" placeholder="1000.00">
                 </div>
                   </div>
 
                   <div class="form-outline mb-4">
                   <div class="input-group mb-3">
                     <div class="form-outline">
-                    <input class="form-control" type="file" id="formFileMultiple" multiple placeholder="Documents"/>
+                    <input class="form-control" type="file" id="document" name="document" multiple placeholder="Documents"/>
                     </div>
                     </div>
                   </div>
 
                   <div class="form-outline mb-4">
                   <div class="form-outline">
-                  <textarea class="form-control" id="textAreaExample" rows="4" placeholder="Description"></textarea>
+                  <textarea class="form-control" id="description" rows="4" name="description" placeholder="Description"></textarea>
                   <label class="form-label" for="textAreaExample"></label>
                   </div>
                   </div>
 
                   <div class="d-flex justify-content-center">
-                    <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" style="background-color: #507daf;">Register</button>
+                    <button type="submit" id="register" name="register" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" style="background-color: #507daf;">Register</button>
                   </div>
 
                   <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!" class="fw-bold text-body"><u>Login here</u></a></p>
