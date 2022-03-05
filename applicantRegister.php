@@ -22,14 +22,17 @@
 
         $sqluser = "INSERT INTO user (username, password, fullname, email, mobileNo) VALUES ('$username', '$password', '$_POST[fullname]', '$_POST[email]', '$_POST[mobileNo]')";
         $sqlapplicant = "INSERT INTO applicant (username, IDno, applicantAddress, householdIncome) VALUES ('$_POST[fullname]', '$_POST[IDno]', '$_POST[applicantAddress]', '$_POST[householdIncome]')";
+        $sqldocument = "INSERT INTO document (filename, description, username) VALUES document ('$_POST[document]', '$_POST[description]', '$username')";
           if($save = mysqli_query($conn, $sqluser) && $save2 = mysqli_query($conn,$sqlapplicant) && $save3 = mysqli_query($conn,$sqldocument)){
 ?>
             <p>
               <?php echo "<script>setTimeout(\"location.href = 'applicantDashboard.php';\",1500);</script>"; ?>
             </p>
+<?php
         }
     }
-
+  }
+?>
 
 <!doctype html>
 <html lang="en">

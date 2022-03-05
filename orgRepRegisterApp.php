@@ -13,7 +13,7 @@
         $sqluser = "INSERT INTO user (username, password, fullname, email, mobileNo) VALUES ('$username', '$password', '$_POST[fullname]', '$_POST[email]', '$_POST[mobileNo]')";
         $sqlapplicant = "INSERT INTO applicant (username, IDno, applicantAddress, householdIncome) VALUES ('$username', '$_POST[IDno]', '$_POST[applicantAddress]', '$_POST[householdIncome]')";
         $sqldocument = "INSERT INTO document (documentID, filename, description, username) VALUES document ('$_POST[documentID]', '$_POST[document]', '$_POST[description]', '$username')";
-          if($save = mysqli_query($conn, $sqluser) && $save2 = mysqli_query($conn,$sqlapplicant) && $save3 = mysqli_query($conn,$sqldocumen)){
+          if($save = mysqli_query($conn, $sqluser) && $save2 = mysqli_query($conn,$sqlapplicant) && $save3 = mysqli_query($conn,$sqldocument)){
 ?>
             <div class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">

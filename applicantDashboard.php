@@ -27,10 +27,6 @@
 
 <div class="sidebar" style="padding-top: 100px;">
   <a class="active" href="#home">Dashboard</a>
-  <a href="#news">Add Applicants</a>
-  <a href="#contact">Record Disbursement</a>
-  <a href="#about">Organizae Appeal</a>
-  <a href="#about">Record Contribution</a>
 </div>
 
 <!-- Page content -->
