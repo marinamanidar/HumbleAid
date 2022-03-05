@@ -13,12 +13,12 @@
   </head>
   <body>
 
-  <nav class="navbar fixed-top navbar-light bg-light">
+  <nav class="navbar fixed-top navbar-light bg-light" style="background-color: #507daf;">
   <div class="container-fluid">
     <a class="navbar-brand">Humble Aid </a>
     <form class="d-flex">
         <p style="padding: 0px 50px;">John</p>
-      <button class="btn btn-outline-success" type="submit">Search</button>
+      <button class="btn" type="submit">Log Out</button>
     </form>
   </div>
 </nav>
@@ -26,8 +26,8 @@
   <!-- The sidebar -->
 
 <div class="sidebar" style="padding-top: 100px;">
-  <a class="active" href="#home">Dashboard</a>
-  <a href="#news">Add Applicants</a>
+  <a href="#home">Dashboard</a>
+  <a class="active" href="#news">Add Applicants</a>
   <a href="#contact">Record Disbursement</a>
   <a href="#about">Organizae Appeal</a>
   <a href="#about">Record Contribution</a>
@@ -49,14 +49,24 @@
   <input
     type="text"
     class="form-control"
-    placeholder="e.g. John Doe"
+    placeholder="John Doe"
     aria-label="Full Name"
     aria-describedby="basic-addon1"
   />
 </div>
 
+<div class="input-group mb-3">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="johndoe@gmail.com"
+    aria-label="email"
+    aria-describedby="basic-addon1"
+  />
+</div>
+
 <div class="form-outline">
-  <input type="text" id="typeText" class="form-control" placeholder="512021202"/>
+  <input type="text" id="typeText" class="form-control" placeholder="123456-01-1254"/>
   <label class="form-label" for="typeText"></label>
 </div>
 
@@ -64,11 +74,11 @@
   <div class="input-group-prepend">
     <span class="input-group-text">+60</span>
   </div>
-  <input type="text" id="typeText" class="form-control" placeholder="0123345622" />
+  <input type="text" id="typeText" class="form-control" placeholder="123345622" />
 </div>
 
 <div class="form-outline">
-  <textarea class="form-control" id="textAreaExample" rows="4" placeholder=""></textarea>
+  <textarea class="form-control" id="textAreaExample" rows="4" placeholder="Address"></textarea>
   <label class="form-label" for="textAreaExample"></label>
 </div>
 
@@ -76,7 +86,7 @@
   <div class="input-group-prepend">
     <span class="input-group-text">RM</span>
   </div>
-  <input type="text" class="form-control" aria-label="Amount" placeholder="Household Salary">
+  <input type="text" class="form-control" aria-label="Amount" placeholder="1000.00">
 </div>
 
 <div class="input-group mb-3">
@@ -94,7 +104,7 @@
   </div>
 </div>
 
-<button type="button" class="btn btn-primary btn-lg btn-block">Register</button>
+<button type="button" class="btn btn-primary btn-lg btn-block" style="background-color: #507daf;">Register</button>
 
 <!-- Page content -->
 
