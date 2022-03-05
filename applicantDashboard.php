@@ -13,7 +13,7 @@
   </head>
   <body>
 
-  <nav class="navbar fixed-top" style="background-color: #507daf;">
+  <nav class="navbar fixed-top navbar-light bg-light" style="background-color: #507daf;">
   <div class="container-fluid">
     <a class="navbar-brand">Humble Aid </a>
     <form class="d-flex">

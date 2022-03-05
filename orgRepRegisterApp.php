@@ -1,3 +1,17 @@
+<?php
+   include("connection.php");
+
+    if (isset($_POST['register'])) {
+        //$cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']); 
+        $IDno = $_POST['IDno'];
+        $email = $_POST['email'];
+
+        $sqluser = "INSERT INTO 'user' ('username', 'password', 'fullname', 'email', 'mobileNo') VALUES ('$_POST[fullname]', '$_POST[fullname]', '$_POST[fullname]', '$email', '$_POST[mobile]')";
+        $sqlapplicant = "INSERT INTO 'applicant' ('username', 'IDno', 'applicantAddress', 'householdIncome') VALUES ('$_POST[fullname]', '$IDno', '$_POST[applicantAddress]', '$_POST[householdincome]')";
+
+    }
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -35,21 +49,15 @@
 
 <div class="content" style="padding-top: 100px;">
 <h1 class="display-4">Add Aid Applicants</h1>
-<div class="col-9">
-    <!-- Tab content -->
-    <div class="tab-content" id="v-pills-tabContent">
-      <div
-        class="tab-pane fade show active"
-        id="v-pills-home"
-        role="tabpanel"
-        aria-labelledby="v-pills-home-tab"
-      >
+
+<form class="form" method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
 
 <div class="input-group mb-3">
   <input
     type="text"
     class="form-control"
     placeholder="John Doe"
+    name = "fullname"
     aria-label="Full Name"
     aria-describedby="basic-addon1"
   />
@@ -57,16 +65,18 @@
 
 <div class="input-group mb-3">
   <input
-    type="text"
+    type="email"
     class="form-control"
+    id="email"
     placeholder="johndoe@gmail.com"
     aria-label="email"
+    name="email"
     aria-describedby="basic-addon1"
   />
 </div>
 
 <div class="form-outline">
-  <input type="text" id="typeText" class="form-control" placeholder="123456-01-1254"/>
+  <input type="text" class="form-control" name="IDno" placeholder="123456-01-1254"/>
   <label class="form-label" for="typeText"></label>
 </div>
 
@@ -74,11 +84,11 @@
   <div class="input-group-prepend">
     <span class="input-group-text">+60</span>
   </div>
-  <input type="text" id="typeText" class="form-control" placeholder="123345622" />
+  <input type="text" class="form-control" name="mobileNo" placeholder="0123345622" />
 </div>
 
 <div class="form-outline">
-  <textarea class="form-control" id="textAreaExample" rows="4" placeholder="Address"></textarea>
+  <textarea class="form-control" rows="4" name="applicantAddress" placeholder="Address"></textarea>
   <label class="form-label" for="textAreaExample"></label>
 </div>
 
@@ -86,24 +96,26 @@
   <div class="input-group-prepend">
     <span class="input-group-text">RM</span>
   </div>
-  <input type="text" class="form-control" aria-label="Amount" placeholder="1000.00">
+  <input type="text" class="form-control" aria-label="Amount" name="householdincome" placeholder="1000.00">
 </div>
 
 <div class="input-group mb-3">
 <div class="form-outline">
-<input class="form-control" type="file" id="formFileMultiple" multiple placeholder="Documents"/>
+<input class="form-control" type="file" name="document" multiple placeholder="Documents"/>
 </div>
 </div>
 
 <div class="form-outline">
-  <textarea class="form-control" id="textAreaExample" rows="4" placeholder="Description"></textarea>
+  <textarea class="form-control" rows="4" name="description" placeholder="Description"></textarea>
   <label class="form-label" for="textAreaExample"></label>
 </div>
     <!-- Tab content -->
   </div>
 </div>
 
-<button type="button" class="btn btn-primary btn-lg btn-block" style="background-color: #507daf;">Register</button>
+<button type="submit" name="register" class="btn btn-primary btn-lg btn-block" style="background-color: #507daf;">Register</button>
+
+</from>
 
 <!-- Page content -->
 
