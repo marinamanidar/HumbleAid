@@ -18,7 +18,7 @@ require_once "manageOrgInformation.php";
    
         <!--CSS-->
         <link rel="stylesheet" href="manageOrganization.css">
-        <!--script src="manageOrganization.js"></script-->
+        
         <!--Javascript-->
         <script>
             function text(){
@@ -31,7 +31,7 @@ require_once "manageOrgInformation.php";
     </head>
 
     <body>
-
+        <!--Navbar-->
         <nav class="navbar fixed-top navbar-light bg-light" style="background-color: #507daf;">
             <div class="container-fluid">
                 <a class="navbar-brand">Humble Aid </a>
@@ -44,7 +44,7 @@ require_once "manageOrgInformation.php";
 
         <!-- The sidebar -->
         <div class="sidebar" style="padding-top: 100px;">
-            <a href="#home">Dashboard</a>
+            <a href="organizationDashboard.php">Dashboard</a>
             <a class="active" href="manageOrganization.php">Manage Organization</a>
         </div>
 
