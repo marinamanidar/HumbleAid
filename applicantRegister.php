@@ -31,7 +31,11 @@
           if($save = mysqli_query($conn, $sqluser) && $save2 = mysqli_query($conn,$sqlapplicant) && $save2 = mysqli_query($conn,$sqldocument)){
 ?>
             <p>
-              <?php echo "<script>setTimeout(\"location.href = 'applicantDashboard.php';\",1500);</script>"; ?>
+              <?php 
+              echo '<script type="text/javascript">';
+              echo 'alert("Username: ' .$username.' \nPassword: '.$password.'");';
+              echo '</script>';
+              echo "<script>setTimeout(\"location.href = 'applicantDashboard.php';\",1500);</script>"; ?>
             </p>
 <?php
         }

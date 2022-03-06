@@ -3,6 +3,9 @@
     include("connection.php");
 
     if (isset($_POST['register'])) {
+        //$upload_image = $_FILES['document']['name'];
+        //$folder = "/xampp/htdocs/HumbleAid/uploads/";
+        //move_uploaded_file($_FILES[" document "][" tmp_name "], "$folder".$_FILES[" document "][" name "]);
         //set input into variables
         $email= $_POST['email'];
         //get row with the same email
@@ -19,14 +22,20 @@
         $comb = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         $shfl = str_shuffle($comb);
         $password = substr($shfl,0,10);
+        $document = $_POST['document'];
+        
 
         $sqluser = "INSERT INTO user (username, password, fullname, email, mobileNo) VALUES ('$username', '$password', '$_POST[fullname]', '$_POST[email]', '$_POST[mobileNo]')";
         $sqlapplicant = "INSERT INTO applicant (username, IDno, applicantAddress, householdIncome, orgName) VALUES ('$username', '$_POST[IDno]', '$_POST[applicantAddress]', '$_POST[householdIncome]', '$_POST[orgName]')";
-        //$sqldocument = "INSERT INTO document (filename, description, username) VALUES document ('$_POST[document]', '$_POST[description]', '$username')";
-          if($save = mysqli_query($conn, $sqluser) && $save2 = mysqli_query($conn,$sqlapplicant)){
+        $sqldocument = "INSERT INTO document (filename, description, username) VALUES ('$document', '$_POST[description]', '$username')";
+          if($save = mysqli_query($conn, $sqluser) && $save2 = mysqli_query($conn,$sqlapplicant) && $save2 = mysqli_query($conn,$sqldocument)){
 ?>
             <p>
-              <?php echo "<script>setTimeout(\"location.href = 'orgRepRegisterApp.php';\",1500);</script>"; ?>
+              <?php 
+              echo '<script type="text/javascript">';
+              echo 'alert("Username: ' .$username.' \nPassword: '.$password.'");';
+              echo '</script>';
+              echo "<script>setTimeout(\"location.href = 'applicantDashboard.php';\",1500);</script>"; ?>
             </p>
 <?php
         }
@@ -132,11 +141,10 @@
   <textarea class="form-control" rows="4" id="description" name="description" placeholder="Description"></textarea>
   <label class="form-label" for="textAreaExample"></label>
 </div>
+<button type="submit" id="register" name="register" class="btn btn-primary btn-lg btn-block" style="background-color: #507daf;">Register</button>
     <!-- Tab content -->
   </div>
 </div>
-
-<button type="submit" id="register" name="register" class="btn btn-primary btn-lg btn-block" style="background-color: #507daf;">Register</button>
 
 </form>
 
