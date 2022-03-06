@@ -1,6 +1,31 @@
 <?php
 
     include("connection.php");
+    session_start();
+
+    $que="select * from user where username = '".$_SESSION["username"]."'";
+    $query=$conn->query($que);
+      while($row=mysqli_fetch_array($query))
+      {
+        //print_r($row);
+        extract($row);
+        $name = $row['fullname'];
+        $user = $row['username'];
+      }
+
+      $qu = "select * from organizationrepresentative where username = $user";
+      $quer = $conn->query($qu);
+      $rowl=mysqli_fetch_array($quer);
+      extract($rowl);
+      $orgID = $rowl['orgID'];
+
+      $qut = "select * from organization where orgID = $orgID";
+      $quert = $conn->query($qut);
+      $rowlt=mysqli_fetch_array($quer);
+      extract($rowlt);
+      $orgName = $rowlt['orgName'];
+
+
 
     if (isset($_POST['register'])) {
         //$upload_image = $_FILES['document']['name'];
@@ -26,7 +51,7 @@
         
 
         $sqluser = "INSERT INTO user (username, password, fullname, email, mobileNo) VALUES ('$username', '$password', '$_POST[fullname]', '$_POST[email]', '$_POST[mobileNo]')";
-        $sqlapplicant = "INSERT INTO applicant (username, IDno, applicantAddress, householdIncome, orgName) VALUES ('$username', '$_POST[IDno]', '$_POST[applicantAddress]', '$_POST[householdIncome]', '$_POST[orgName]')";
+        $sqlapplicant = "INSERT INTO applicant (username, IDno, applicantAddress, householdIncome, orgName) VALUES ('$username', '$_POST[IDno]', '$_POST[applicantAddress]', '$_POST[householdIncome]', '$orgName')";
         $sqldocument = "INSERT INTO document (filename, description, username) VALUES ('$document', '$_POST[description]', '$username')";
           if($save = mysqli_query($conn, $sqluser) && $save2 = mysqli_query($conn,$sqlapplicant) && $save2 = mysqli_query($conn,$sqldocument)){
 ?>
@@ -62,7 +87,7 @@
   <div class="container-fluid">
     <a class="navbar-brand">Humble Aid </a>
     <form class="d-flex">
-        <p style="margin: 5px; padding: 5px">John Doe</p>
+        <p style="margin: 5px; padding: 5px"><?php echo $name; ?></p>; 
       <button class="btn" type="submit">Log Out</button>
     </form>
   </div>
