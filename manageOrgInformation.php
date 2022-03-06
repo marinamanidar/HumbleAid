@@ -20,8 +20,6 @@ if(isset($_POST['submit'])){
     $password = str_shuffle($password);
     $passwords = substr($password,0,8);
 
-    $error = array();
-
     //email validate from mysqli
     $check_email = "SELECT email FROM user WHERE email = '$email' ";
     $check = mysqli_query($connect, $check_email);
@@ -30,12 +28,20 @@ if(isset($_POST['submit'])){
     $check_username = "SELECT username FROM user WHERE username = '$username'";
     $check1 = mysqli_query($connect, $check_username);
 
-    if(count($error) == 0){
+    if(mysqli_num_rows($check) > 0){
+        echo "<script> alert('Email already exist') </script>";
+    }
+    else if(mysqli_num_rows($check1) > 0){
+        echo "<script> alert('Username already exist') </script>";
+    }
+    else{
         $query = "INSERT INTO `user`(`username`, `password`, `fullname`, `email`, `mobileNo`) VALUES ('$username', '$passwords', '$fullname', '$email', '$mobile')";
         $save = mysqli_query($connect, $query);
 
         $query2 = "INSERT INTO `organizationrepresentative`(`username`, `jobTitle`, `orgID`) VALUES ('$username', '$jobtitle', '$orgID')";
         $save2 = mysqli_query($connect, $query2);
+
+        echo "<script> alert('Organization Representative Save') </script>";
     }
 
 }
