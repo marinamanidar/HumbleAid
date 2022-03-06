@@ -1,37 +1,38 @@
 <?php
+   include("connection.php");
+   session_start();
+ 
+   
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+      // email and password sent from form 
+      
+      $username = mysqli_real_escape_string($conn,$_POST['username']);
+      $password = mysqli_real_escape_string($conn,$_POST['password']); 
 
-    include("connection.php");
+      //get row which email and password = to input
+      $sql = "SELECT username FROM user WHERE username = '$username' and password = '$password'";
+      $result = mysqli_query($conn,$sql);
+      $row = mysqli_fetch_array($result);
 
-    if (isset($_POST['register'])) {
-        //set input into variables
-        $email= $_POST['email'];
-        //get row with the same email
-        $sqlemail = "SELECT * FROM user WHERE email='$email'";
-        $res = mysqli_query($conn,$sqlemail);
-        //if the email entered is already registered then send alert
-        if(mysqli_num_rows($res) > 0){
-        echo '<script>alert("Email already registered!")</script>';
-        }
-        else{
-        //$cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
-        $fullname = $_POST['fullname'];
-        $username = str_replace(' ', '', $fullname);
-        $comb = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        $shfl = str_shuffle($comb);
-        $password = substr($shfl,0,10);
+      
+      $count = mysqli_num_rows($result);
+      
+      // If result matched email and password, table row must be 1 row
+      if($count == 1) {
+          //set the row to current session
+         $_SESSION['username'] = $username;
+         $_SESSION['password'] = $password;
+         
+         header("location: orgRepRegisterApp.php");
 
-        $sqluser = "INSERT INTO user (username, password, fullname, email, mobileNo) VALUES ('$username', '$password', '$_POST[fullname]', '$_POST[email]', '$_POST[mobileNo]')";
-        $sqlapplicant = "INSERT INTO applicant (username, IDno, applicantAddress, householdIncome, orgName) VALUES ('$username', '$_POST[IDno]', '$_POST[applicantAddress]', '$_POST[householdIncome]', '$_POST[orgName]')";
-        //$sqldocument = "INSERT INTO document (filename, description, username) VALUES document ('$_POST[document]', '$_POST[description]', '$username')";
-          if($save = mysqli_query($conn, $sqluser) && $save2 = mysqli_query($conn,$sqlapplicant)){
+      }else {
+          //if not then send error msg
+          echo '<script type="text/javascript">';
+          echo 'alert("Email or password Invalid");';
+          echo '</script>';
+      }
+   }
 ?>
-            <p>
-              <?php echo "<script>setTimeout(\"location.href = 'applicantDashboard.php';\",1500);</script>"; ?>
-            </p>
-<?php
-        }
-    }
-  }
 ?>
 
 <!doctype html>
@@ -66,53 +67,16 @@
                 <form class="form" method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
 
                   <div class="form-outline mb-4">
-                    <input type="text" id="IDno" name="IDno" class="form-control" placeholder="123456-01-1254"/>
-                  </div>
-
-                  <div class="form-outline mb-4">
-                    <input type="email" id="email" name="email" class="form-control" placeholder="johndoe@gmail.com"/>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="John Doe"/>
                   </div>
 
                   <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">+60</span>
-                    </div>
-                    <input type="text" id="mobileNo" name="mobileNo" class="form-control" placeholder="123345622" />
+                    <input type="password" id="password" name="password" class="form-control" placeholder="*******" />
                   </div>
+                
+                  <button type="submit" name="btn_logic" class="col-12 btn btn-secondary btn-lg btn-block" style="background-color:#507daf ;">Log In</button>
 
-                  <div class="form-outline mb-4">
-                    <textarea class="form-control" id="applicantAddress" name="applicantAddress" rows="4" placeholder="Address"></textarea>
-                  </div>
-
-                  <div class="form-outline mb-4">
-                  <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">RM</span>
-                  </div>
-                  <input type="text" class="form-control" id="householdIncome" name="householdIncome" aria-label="Amount" placeholder="1000.00">
-                </div>
-                  </div>
-
-                  <div class="form-outline mb-4">
-                  <div class="input-group mb-3">
-                    <div class="form-outline">
-                    <input class="form-control" type="file" id="document" name="document" multiple placeholder="Documents"/>
-                    </div>
-                    </div>
-                  </div>
-
-                  <div class="form-outline mb-4">
-                  <div class="form-outline">
-                  <textarea class="form-control" id="description" rows="4" name="description" placeholder="Description"></textarea>
-                  <label class="form-label" for="textAreaExample"></label>
-                  </div>
-                  </div>
-
-                  <div class="d-flex justify-content-center">
-                    <button type="submit" id="register" name="register" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" style="background-color: #507daf;">Register</button>
-                  </div>
-
-                  <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!" class="fw-bold text-body"><u>Login here</u></a></p>
+                  <p class="text-center text-muted mt-5 mb-0">Don't have an account? <a href="#!" class="fw-bold text-body"><u>Sign Up</u></a></p>
 
                 </form>
 

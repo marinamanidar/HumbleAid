@@ -27,11 +27,15 @@
 
         $sqluser = "INSERT INTO user (username, password, fullname, email, mobileNo) VALUES ('$username', '$password', '$_POST[fullname]', '$_POST[email]', '$_POST[mobileNo]')";
         $sqlapplicant = "INSERT INTO applicant (username, IDno, applicantAddress, householdIncome, orgName) VALUES ('$username', '$_POST[IDno]', '$_POST[applicantAddress]', '$_POST[householdIncome]', '$_POST[orgName]')";
-        $sqldocument = "INSERT INTO document (filename, description, username) VALUES ('$_POST[document]', '$_POST[description]', '$username')";
+        $sqldocument = "INSERT INTO document (filename, description, username) VALUES ('$document', '$_POST[description]', '$username')";
           if($save = mysqli_query($conn, $sqluser) && $save2 = mysqli_query($conn,$sqlapplicant) && $save2 = mysqli_query($conn,$sqldocument)){
 ?>
             <p>
-              <?php echo "<script>setTimeout(\"location.href = 'applicantDashboard.php';\",1500);</script>"; ?>
+              <?php 
+              echo '<script type="text/javascript">';
+              echo 'alert("Username: ' .$username.' \nPassword: '.$password.'");';
+              echo '</script>';
+              echo "<script>setTimeout(\"location.href = 'applicantDashboard.php';\",1500);</script>"; ?>
             </p>
 <?php
         }
