@@ -3,9 +3,6 @@
     include("connection.php");
 
     if (isset($_POST['register'])) {
-        //$upload_image = $_FILES['document']['name'];
-        //$folder = "/xampp/htdocs/HumbleAid/uploads/";
-        //move_uploaded_file($_FILES[" document "][" tmp_name "], "$folder".$_FILES[" document "][" name "]);
         //set input into variables
         $email= $_POST['email'];
         //get row with the same email
@@ -22,13 +19,11 @@
         $comb = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         $shfl = str_shuffle($comb);
         $password = substr($shfl,0,10);
-        $document = $_POST['document'];
-        
 
         $sqluser = "INSERT INTO user (username, password, fullname, email, mobileNo) VALUES ('$username', '$password', '$_POST[fullname]', '$_POST[email]', '$_POST[mobileNo]')";
         $sqlapplicant = "INSERT INTO applicant (username, IDno, applicantAddress, householdIncome, orgName) VALUES ('$username', '$_POST[IDno]', '$_POST[applicantAddress]', '$_POST[householdIncome]', '$_POST[orgName]')";
-        $sqldocument = "INSERT INTO document (filename, description, username) VALUES ('$document', '$_POST[description]', '$username')";
-          if($save = mysqli_query($conn, $sqluser) && $save2 = mysqli_query($conn,$sqlapplicant) && $save2 = mysqli_query($conn,$sqldocument)){
+        //$sqldocument = "INSERT INTO document (filename, description, username) VALUES document ('$_POST[document]', '$_POST[description]', '$username')";
+          if($save = mysqli_query($conn, $sqluser) && $save2 = mysqli_query($conn,$sqlapplicant)){
 ?>
             <p>
               <?php echo "<script>setTimeout(\"location.href = 'applicantDashboard.php';\",1500);</script>"; ?>
@@ -66,37 +61,9 @@
           <div class="col-12 col-md-9 col-lg-7 col-xl-6">
             <div class="card" style="border-radius: 15px;">
               <div class="card-body p-5">
-                <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+                <h2 class="text-uppercase text-center mb-5">Log In As Organization Representative</h2>
 
-                <form class="form" method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>" enctype="multipart/form-data">
-
-                <div class="form-outline mb-4">
-                <select name="orgName" class="form-select form-select-sm" aria-label=".form-select-sm example">
-                  <option selected>Select Organization</option>
-                  <?php
-                      $connect = mysqli_connect("localhost","root","","humbleaid");
-                      $orgName = mysqli_query($connect, "SELECT DISTINCT orgName FROM organization");
-                      while ($orgrow = mysqli_fetch_array($orgName)) {
-                        $nameorg = $orgrow['orgName'];
-                        echo "<option value='$nameorg'>";
-                        echo "$nameorg";
-                        echo '</option>';
-                        }
-                  ?>
-                </select>
-                  </div>
-
-                  <div class="form-outline mb-4">
-                    <input
-                    type="text"
-                    class="form-control"
-                    placeholder="John Doe"
-                    name="fullname"
-                    id="fullname"
-                    aria-label="Full Name"
-                    aria-describedby="basic-addon1"
-                  />
-                  </div>
+                <form class="form" method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
 
                   <div class="form-outline mb-4">
                     <input type="text" id="IDno" name="IDno" class="form-control" placeholder="123456-01-1254"/>
@@ -128,8 +95,10 @@
 
                   <div class="form-outline mb-4">
                   <div class="input-group mb-3">
-                  <input type="file" name="document" id="document" class="form-control" id="inputGroupFile02">
-                  </div>
+                    <div class="form-outline">
+                    <input class="form-control" type="file" id="document" name="document" multiple placeholder="Documents"/>
+                    </div>
+                    </div>
                   </div>
 
                   <div class="form-outline mb-4">
