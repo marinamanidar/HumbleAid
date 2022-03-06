@@ -51,9 +51,6 @@
   <nav class="navbar fixed-top" style="background-color: #507daf;">
   <div class="container-fluid">
     <a class="navbar-brand" style="color:white" >Humble Aid </a>
-    <form class="d-flex">
-      <button class="btn logoutbtn" type="submit">Log Out</button>
-    </form>
   </div>
 </nav>
 
@@ -64,37 +61,9 @@
           <div class="col-12 col-md-9 col-lg-7 col-xl-6">
             <div class="card" style="border-radius: 15px;">
               <div class="card-body p-5">
-                <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+                <h2 class="text-uppercase text-center mb-5">Log In As Organization Representative</h2>
 
                 <form class="form" method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
-
-                <div class="form-outline mb-4">
-                <select name="orgName" class="form-select form-select-sm" aria-label=".form-select-sm example">
-                  <option selected>Select Organization</option>
-                  <?php
-                      $connect = mysqli_connect("localhost","root","","humbleaid");
-                      $orgName = mysqli_query($connect, "SELECT DISTINCT orgName FROM organization");
-                      while ($orgrow = mysqli_fetch_array($orgName)) {
-                        $nameorg = $orgrow['orgName'];
-                        echo "<option value='$nameorg'>";
-                        echo "$nameorg";
-                        echo '</option>';
-                        }
-                  ?>
-                </select>
-                  </div>
-
-                  <div class="form-outline mb-4">
-                    <input
-                    type="text"
-                    class="form-control"
-                    placeholder="John Doe"
-                    name="fullname"
-                    id="fullname"
-                    aria-label="Full Name"
-                    aria-describedby="basic-addon1"
-                  />
-                  </div>
 
                   <div class="form-outline mb-4">
                     <input type="text" id="IDno" name="IDno" class="form-control" placeholder="123456-01-1254"/>
