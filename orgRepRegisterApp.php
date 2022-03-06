@@ -11,21 +11,15 @@
         extract($row);
         $name = $row['fullname'];
         $user = $row['username'];
+
+        $qu = "select * from organizationrepresentative where username = $user";
+        $quer = $conn->query($qu);
+
+        while($rowl=mysqli_fetch_array($quer)){
+        extract($rowl);
+        $orgName = $rowl['orgName'];
+        }
       }
-
-      $qu = "select * from organizationrepresentative where username = $user";
-      $quer = $conn->query($qu);
-      $rowl=mysqli_fetch_array($quer);
-      extract($rowl);
-      $orgID = $rowl['orgID'];
-
-      $qut = "select * from organization where orgID = $orgID";
-      $quert = $conn->query($qut);
-      $rowlt=mysqli_fetch_array($quer);
-      extract($rowlt);
-      $orgName = $rowlt['orgName'];
-
-
 
     if (isset($_POST['register'])) {
         //$upload_image = $_FILES['document']['name'];
