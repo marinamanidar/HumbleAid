@@ -3,6 +3,16 @@
     include("connection.php");
 
     if (isset($_POST['register'])) {
+        //set input into variables
+        $email= $_POST['email'];
+        //get row with the same email
+        $sqlemail = "SELECT * FROM user WHERE email='$email'";
+        $res = mysqli_query($conn,$sqlemail);
+        //if the email entered is already registered then send alert
+        if(mysqli_num_rows($res) > 0){
+        echo '<script>alert("Email already registered!")</script>';
+        }
+        else{
         //$cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
         $fullname = $_POST['fullname'];
         $username = str_replace(' ', '', $fullname);
@@ -11,32 +21,17 @@
         $password = substr($shfl,0,10);
 
         $sqluser = "INSERT INTO user (username, password, fullname, email, mobileNo) VALUES ('$username', '$password', '$_POST[fullname]', '$_POST[email]', '$_POST[mobileNo]')";
-        $sqlapplicant = "INSERT INTO applicant (username, IDno, applicantAddress, householdIncome) VALUES ('$username', '$_POST[IDno]', '$_POST[applicantAddress]', '$_POST[householdIncome]')";
-        $sqldocument = "INSERT INTO document (documentID, filename, description, username) VALUES document ('$_POST[documentID]', '$_POST[document]', '$_POST[description]', '$username')";
-          if($save = mysqli_query($conn, $sqluser) && $save2 = mysqli_query($conn,$sqlapplicant) && $save3 = mysqli_query($conn,$sqldocument)){
+        $sqlapplicant = "INSERT INTO applicant (username, IDno, applicantAddress, householdIncome, orgName) VALUES ('$username', '$_POST[IDno]', '$_POST[applicantAddress]', '$_POST[householdIncome]', '$_POST[orgName]')";
+        //$sqldocument = "INSERT INTO document (filename, description, username) VALUES document ('$_POST[document]', '$_POST[description]', '$username')";
+          if($save = mysqli_query($conn, $sqluser) && $save2 = mysqli_query($conn,$sqlapplicant)){
 ?>
-            <div class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Modal title</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p>Modal body text goes here.</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
+            <p>
+              <?php echo "<script>setTimeout(\"location.href = 'orgRepRegisterApp.php';\",1500);</script>"; ?>
+            </p>
 <?php
         }
     }
+  }
 ?>
 
 <!doctype html>

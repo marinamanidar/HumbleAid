@@ -51,6 +51,9 @@
   <nav class="navbar fixed-top" style="background-color: #507daf;">
   <div class="container-fluid">
     <a class="navbar-brand" style="color:white" >Humble Aid </a>
+    <form class="d-flex">
+      <button class="btn logoutbtn" type="submit">Log Out</button>
+    </form>
   </div>
 </nav>
 
