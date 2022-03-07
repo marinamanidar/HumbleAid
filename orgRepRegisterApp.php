@@ -11,14 +11,6 @@
         extract($row);
         $name = $row['fullname'];
         $user = $row['username'];
-
-        $qu = "select * from organizationrepresentative where username = $user";
-        $quer = $conn->query($qu);
-
-        while($rowl=mysqli_fetch_array($quer)){
-        extract($rowl);
-        $orgName = $rowl['orgName'];
-        }
       }
 
     if (isset($_POST['register'])) {
@@ -54,7 +46,7 @@
               echo '<script type="text/javascript">';
               echo 'alert("Username: ' .$username.' \nPassword: '.$password.'");';
               echo '</script>';
-              echo "<script>setTimeout(\"location.href = 'applicantDashboard.php';\",1500);</script>"; ?>
+              echo "<script>setTimeout(\"location.href = 'orgRepRegisterApp.php';\",1500);</script>"; ?>
             </p>
 <?php
         }
@@ -82,7 +74,7 @@
     <a class="navbar-brand">Humble Aid </a>
     <form class="d-flex">
         <p style="margin: 5px; padding: 5px"><?php echo $name; ?></p>; 
-      <button class="btn" type="submit">Log Out</button>
+      <button class="btn" type="submit"><a href="logout.php" class="fw-bold text-body">Log Out</button>
     </form>
   </div>
 </nav>

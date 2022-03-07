@@ -35,7 +35,7 @@
               echo '<script type="text/javascript">';
               echo 'alert("Username: ' .$username.' \nPassword: '.$password.'");';
               echo '</script>';
-              echo "<script>setTimeout(\"location.href = 'applicantDashboard.php';\",1500);</script>"; ?>
+              echo "<script>setTimeout(\"location.href = 'applicantLogin.php';\",1500);</script>"; ?>
             </p>
 <?php
         }
@@ -99,26 +99,27 @@
                     id="fullname"
                     aria-label="Full Name"
                     aria-describedby="basic-addon1"
+                    required
                   />
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="text" id="IDno" name="IDno" class="form-control" placeholder="123456-01-1254"/>
+                    <input type="text" id="IDno" name="IDno" class="form-control" placeholder="123456-01-1254" required/>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="email" id="email" name="email" class="form-control" placeholder="johndoe@gmail.com"/>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="johndoe@gmail.com" required/>
                   </div>
 
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text">+60</span>
                     </div>
-                    <input type="text" id="mobileNo" name="mobileNo" class="form-control" placeholder="123345622" />
+                    <input type="text" id="mobileNo" name="mobileNo" class="form-control" placeholder="123345622" required/>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <textarea class="form-control" id="applicantAddress" name="applicantAddress" rows="4" placeholder="Address"></textarea>
+                    <textarea class="form-control" id="applicantAddress" name="applicantAddress" rows="4" placeholder="Address" required></textarea>
                   </div>
 
                   <div class="form-outline mb-4">
@@ -126,19 +127,19 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">RM</span>
                   </div>
-                  <input type="text" class="form-control" id="householdIncome" name="householdIncome" aria-label="Amount" placeholder="1000.00">
+                  <input type="text" class="form-control" id="householdIncome" name="householdIncome" aria-label="Amount" placeholder="1000.00" required>
                 </div>
                   </div>
 
                   <div class="form-outline mb-4">
                   <div class="input-group mb-3">
-                  <input type="file" name="document" id="document" class="form-control" id="inputGroupFile02">
+                  <input type="file" name="document" id="document" class="form-control" id="inputGroupFile02" required>
                   </div>
                   </div>
 
                   <div class="form-outline mb-4">
                   <div class="form-outline">
-                  <textarea class="form-control" id="description" rows="4" name="description" placeholder="Description"></textarea>
+                  <textarea class="form-control" id="description" rows="4" name="description" placeholder="Description" required></textarea>
                   <label class="form-label" for="textAreaExample"></label>
                   </div>
                   </div>
@@ -147,7 +148,7 @@
                     <button type="submit" id="register" name="register" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" style="background-color: #507daf;">Register</button>
                   </div>
 
-                  <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!" class="fw-bold text-body"><u>Login here</u></a></p>
+                  <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="applicantLogIn.php" class="fw-bold text-body"><u>Login here</u></a></p>
 
                 </form>
 
