@@ -24,7 +24,7 @@
          $_SESSION['password'] = $password;
          
          header("location: applicantDashboard.php");
-
+////ryherherhrsh
       }else {
           //if not then send error msg
           echo '<script type="text/javascript">';
