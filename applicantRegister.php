@@ -147,7 +147,7 @@
                     <button type="submit" id="register" name="register" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" style="background-color: #507daf;">Register</button>
                   </div>
 
-                  <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!" class="fw-bold text-body"><u>Login here</u></a></p>
+                  <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="" class="fw-bold text-body"><u>Login here</u></a></p>
 
                 </form>
 
