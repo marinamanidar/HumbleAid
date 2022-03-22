@@ -23,8 +23,8 @@
          $_SESSION['username'] = $username;
          $_SESSION['password'] = $password;
          
-         header("location: orgRepRegisterApp.php");
-
+         header("location: applicantDashboard.php");
+////ryherherhrsh
       }else {
           //if not then send error msg
           echo '<script type="text/javascript">';
@@ -33,7 +33,6 @@
       }
    }
 ?>
-
 
 <!doctype html>
 <html lang="en">
@@ -62,7 +61,7 @@
           <div class="col-12 col-md-9 col-lg-7 col-xl-6">
             <div class="card" style="border-radius: 15px;">
               <div class="card-body p-5">
-                <h2 class="text-uppercase text-center mb-5">Log In As Organization Representative</h2>
+                <h2 class="text-uppercase text-center mb-5">Log In As applicant</h2>
 
                 <form class="form" method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
 
@@ -76,9 +75,7 @@
                 
                   <button type="submit" name="btn_logic" class="col-12 btn btn-secondary btn-lg btn-block" style="background-color:#507daf ;">Log In</button>
 
-
-                  <p class="text-center text-muted mt-5 mb-0">Don't have an account? <a href="orgRepRegisterApp.php" class="fw-bold text-body"><u>Sign Up</u></a></p>
-
+                  <p class="text-center text-muted mt-5 mb-0">Don't have an account? <a href="applicantRegister.php" class="fw-bold text-body"><u>Sign Up</u></a></p>
 
                 </form>
 

@@ -37,7 +37,7 @@ require_once "manageOrgInformation.php";
                 <a class="navbar-brand">Humble Aid </a>
                 <form class="d-flex">
                     <p style="padding: 0px 50px; text-align:center;">John</p>
-                    <button class="btn-logout btn-outline-success" type="submit">Log Out</button>
+                    <button class="btn" type="submit"><a href="index.php" class="fw-bold text-body">Log Out</button>
                 </form>
             </div>
         </nav>
@@ -132,11 +132,11 @@ require_once "manageOrgInformation.php";
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Organization name :</label>
-                                <input type="text" name="organization_name" class="form-control">
+                                <input type="text" name="organization_name" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Address :</label>
-                                <input type="text" name="organizationaddress" class="form-control">
+                                <input type="text" name="organizationaddress" class="form-control" required>
                             </div>
                         </div>
                         <div class="modal-footer">

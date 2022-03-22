@@ -7,29 +7,49 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="orgRepRegisterApp.css">
 
-    <title>Humble Aid</title>
+    <title>Hello, world!</title>
   </head>
   <body>
 
-  <nav class="navbar fixed-top navbar-light bg-light" style="background-color: #507daf;">
+  <nav class="navbar fixed-top" style="background-color: #507daf;">
   <div class="container-fluid">
-    <a class="navbar-brand">Humble Aid </a>
-    <form class="d-flex">
-        <p style="margin: 5px; padding: 5px">Applicant</p>
-        <button class="btn" type="submit"><a href="index.php" class="fw-bold text-body">Log Out</button>
-    </form>
+  <a class="navbar-brand">Humble Aid </a>
   </div>
+
 </nav>
-
-  <!-- The sidebar -->
-
-<div class="sidebar" style="padding-top: 100px;">
-  <a class="active" href="#home">Dashboard</a>
+<div class="card text-center" style="padding-top: 100px;">
+  <div class="card-header">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Applicant</h5>
+    <a href="applicantRegister.php" class="btn btn-primary">Register</a>
+    <a href="applicantLogIn.php" class="btn btn-primary">Log In</a>
+  </div>
 </div>
 
-<!-- Page content -->
+<div class="card text-center">
+  <div class="card-header">
+  </div>
+  <div class="card-body">
+  <div class="card-body">
+    <h5 class="card-title">Organization Representative</h5>
+    <a href="orgRepLogIn.php" class="btn btn-primary">Login</a>
+  </div>
+  </div>
+</div>
+
+<div class="card text-center">
+  <div class="card-header">
+  </div>
+  <div class="card-body">
+  <div class="card-body">
+    <h5 class="card-title">Admin</h5>
+    <a href="manageOrganization.php" class="btn btn-primary">Login</a>
+  </div>
+  </div>
+</div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

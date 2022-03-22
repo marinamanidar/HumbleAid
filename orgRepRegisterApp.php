@@ -1,6 +1,17 @@
 <?php
 
     include("connection.php");
+    session_start();
+
+    $que="select * from user where username = '".$_SESSION["username"]."'";
+    $query=$conn->query($que);
+      while($row=mysqli_fetch_array($query))
+      {
+        //print_r($row);
+        extract($row);
+        $name = $row['fullname'];
+        $user = $row['username'];
+      }
 
     if (isset($_POST['register'])) {
         //$upload_image = $_FILES['document']['name'];
@@ -26,8 +37,8 @@
         
 
         $sqluser = "INSERT INTO user (username, password, fullname, email, mobileNo) VALUES ('$username', '$password', '$_POST[fullname]', '$_POST[email]', '$_POST[mobileNo]')";
-        $sqlapplicant = "INSERT INTO applicant (username, IDno, applicantAddress, householdIncome, orgName) VALUES ('$username', '$_POST[IDno]', '$_POST[applicantAddress]', '$_POST[householdIncome]', '$_POST[orgName]')";
-        $sqldocument = "INSERT INTO document (filename, description, username) VALUES ('$document', '$_POST[description]', '$username')";
+        $sqlapplicant = "INSERT INTO applicant (username, IDno, applicantAddress, householdIncome, orgName) VALUES ('$username', '$_POST[IDno]', '$_POST[applicantAddress]', '$_POST[householdIncome]', 'UNO Organization')";
+        $sqldocument = "INSERT INTO document (filename, description, username) VALUES ('paymentslip.pdf', '$_POST[description]', '$username')";
           if($save = mysqli_query($conn, $sqluser) && $save2 = mysqli_query($conn,$sqlapplicant) && $save2 = mysqli_query($conn,$sqldocument)){
 ?>
             <p>
@@ -35,7 +46,7 @@
               echo '<script type="text/javascript">';
               echo 'alert("Username: ' .$username.' \nPassword: '.$password.'");';
               echo '</script>';
-              echo "<script>setTimeout(\"location.href = 'applicantDashboard.php';\",1500);</script>"; ?>
+              echo "<script>setTimeout(\"location.href = 'orgRepRegisterApp.php';\",1500);</script>"; ?>
             </p>
 <?php
         }
@@ -62,8 +73,8 @@
   <div class="container-fluid">
     <a class="navbar-brand">Humble Aid </a>
     <form class="d-flex">
-        <p style="margin: 5px; padding: 5px">John Doe</p>
-      <button class="btn" type="submit">Log Out</button>
+        <p style="margin: 5px; padding: 5px"><?php echo $name; ?></p>; 
+      <button class="btn" type="submit"><a href="logout.php" class="fw-bold text-body">Log Out</button>
     </form>
   </div>
 </nav>
