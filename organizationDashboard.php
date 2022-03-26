@@ -20,7 +20,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand">Humble Aid </a>
                 <form class="d-flex">
-                    <p style="padding: 0px 50px; text-align:center;">John</p>
+                    <p style="padding: 0px 50px; text-align:center;"><?php $_SESSION["username"] ?></p>
                     <button class="btn-logout btn-outline-success" type="submit">Log Out</button>
                 </form>
             </div>
@@ -29,7 +29,10 @@
         <!-- The sidebar -->
         <div class="sidebar" style="padding-top: 100px;">
             <a class="active" href="organizationDashboard.php">Dashboard</a>
-            <a href="manageOrganization.php">Manage Organization</a>
+            <a href="#news">Add Applicants</a>
+            <a href="#contact">Record Disbursement</a>
+            <a href="#about">Organizae Appeal</a>
+            <a href="#about">Record Contribution</a>
         </div>
 
         <div class="content">

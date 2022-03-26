@@ -23,7 +23,8 @@
          $_SESSION['username'] = $username;
          $_SESSION['password'] = $password;
          
-         header("location: orgRepRegisterApp.php");
+         header("location: orgRepDashboard.php");
+         die;
 
       }else {
           //if not then send error msg
