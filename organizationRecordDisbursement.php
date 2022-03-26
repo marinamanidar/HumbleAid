@@ -119,7 +119,7 @@
                     <option selected>Choose Appeal ID</option>
                     <?php
                       $connect = mysqli_connect("localhost","root","","humbleaid");
-                      $appealID = mysqli_query($connect, "SELECT DISTINCT appealID FROM appeal where orgID = '".$_SESSION["orgID"]."'");
+                      $appealID = mysqli_query($connect, "SELECT DISTINCT appealID FROM appeal where outcome = 'active' and orgID = '".$_SESSION["orgID"]."'");
                       while ($appealrow = mysqli_fetch_array($appealID)) {
                         $appealno = $appealrow['appealID'];
                         echo "<option value='$appealno'>";
