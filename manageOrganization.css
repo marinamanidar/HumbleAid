@@ -9,7 +9,7 @@ body{
     margin-top: 10%;
     margin-left: 20%;
     margin-right: 20%;
-    background: rgb(236, 219, 235);
+    background: rgb(237, 242, 250);
     padding: 30px;
     box-shadow: 0px 1px 20px 1px rgb(15, 15, 15);
     border-radius: 5px;
@@ -20,20 +20,20 @@ body{
     margin-bottom: 10%;
     margin-left: 20%;
     margin-right: 20%;
-    background: rgb(236, 219, 235);
+    background: rgb(237, 242, 250);
     padding: 30px;
     box-shadow: 0px 1px 20px 1px rgb(15, 15, 15);
     border-radius: 5px;
 }
 
 .btn{
-    background: #9D77D0;
+    background: #507daf;
     border: none;
     width: 100%;   
 }
 
 .btn-modal{
-    background: #9D77D0;
+    background: #507daf;
     border: none;
     width: 100%;
     
@@ -57,7 +57,7 @@ h2{
 
 .new_organization{
     border-radius: 30px;
-    background: #d2c1e9;
+    background: #a0eef8;
 }
 
 .form{

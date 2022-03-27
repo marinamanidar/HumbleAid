@@ -1,7 +1,6 @@
 <?php
    include("connection.php");
    session_start();
- 
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // email and password sent from form 
