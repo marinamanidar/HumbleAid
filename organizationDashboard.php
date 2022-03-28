@@ -36,10 +36,10 @@
         <!-- The sidebar -->
         <div class="sidebar" style="padding-top: 100px;">
             <a class="active" href="organizationDashboard.php">Dashboard</a>
-            <a href="manageOrganization.php">Manage Organization</a>
+            <a href="orgRepRegisterApp.php">Record Applicant</a>
             <a href="organizationRecordDisbursement.php">Record Disbursement</a>
-            <a href="#">Organize Appeal</a>
-            <a href="#">Record Contribution</a>
+            <a href="organiseAidAppeal.php">Organize Appeal</a>
+            <a href="recordCon.php">Record Contribution</a>
         </div>
 
         <br>

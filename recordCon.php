@@ -65,10 +65,10 @@ while($appealA = mysqli_fetch_assoc($appeals)){
         <!-- The sidebar -->
         <div class="sidebar" style="padding-top: 100px;">
             <a href="organizationDashboard.php">Dashboard</a>
-            <a href="orgRepRegisterApp.php">Add Applicants</a>
-            <a href="#">Record Disbursement</a>
-            <a href="organiseAidAppeal.php">Organise Aid Appeals</a>
-            <a class="active" href="recordContribution.php">Record Contribution</a>
+            <a href="orgRepRegisterApp.php">Record Applicant</a>
+            <a href="organizationRecordDisbursement.php">Record Disbursement</a>
+            <a href="organiseAidAppeal.php">Organize Appeal</a>
+            <a class="active" href="recordCon.php">Record Contribution</a>
         </div>
 
         <div class="content">

@@ -31,12 +31,12 @@
         <td><?php echo $row['applicantAddress'];?></td>
         <td><?php echo $row['householdIncome'];?></td>
         <?php
-        $_SESSION["username"] = $row['username'];
+        $_SESSION["applicant"] = $row['username'];
         $_SESSION["applicantAddress"] = $row['applicantAddress'];
         $_SESSION["householdIncome"] = $row['householdIncome'];
         $_SESSION["appealID"] = $k;
         ?>
-        <td><a class="btn" href="disbursement.php" role="button">Disbursed</a></td>
+        <td><a class="btn" href="disbursement.php" role="button">Disburse Aid</a></td>
     </tr>
     </tbody>
 <?php

@@ -84,10 +84,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         <!-- The sidebar -->
         <div class="sidebar" style="padding-top: 100px;">
             <a href="organizationDashboard.php">Dashboard</a>
-            <a href="orgRepRegisterApp.php">Add Applicants</a>
-            <a href="#">Record Disbursement</a>
-            <a class="active" href="organiseAidAppeal.php">Organise Aid Appeals</a>
-            <a href="recordContribution.php">Record Contribution</a>
+            <a href="orgRepRegisterApp.php">Record Applicant</a>
+            <a href="organizationRecordDisbursement.php">Record Disbursement</a>
+            <a class="active" href="organiseAidAppeal.php">Organize Appeal</a>
+            <a href="recordCon.php">Record Contribution</a>
         </div>
 
         <div class="content">

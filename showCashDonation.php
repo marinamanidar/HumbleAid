@@ -3,10 +3,10 @@
 
     $k = $_POST['id'];
     $k = trim($k);
-    $sql = "Select * from cashdonation where appealID= '{$k}'";
-    $res = mysqli_query($conn,$sql);
+    $sqlC = "Select * from cashdonation where appealID= '{$k}'";
+    $resC = mysqli_query($conn,$sqlC);
 
-    if($res -> num_rows > 0){
+    if($resC -> num_rows > 0){
 ?>
     <thead>
         <th>Amount</th>
@@ -16,12 +16,12 @@
         <tbody>
 
 <?php
-    while($row = mysqli_fetch_array($res)){
+    while($rowC = mysqli_fetch_array($resC)){
 ?>
     <tr>
-        <td><?php echo $row['amount'];?></td>
-        <td><?php echo $row['paymentChannel'];?></td>
-        <td><?php echo $row['referenceNo'];?></td>
+        <td><?php echo $rowC['amount'];?></td>
+        <td><?php echo $rowC['paymentChannel'];?></td>
+        <td><?php echo $rowC['referenceNo'];?></td>
     </tr>
     </tbody>
     

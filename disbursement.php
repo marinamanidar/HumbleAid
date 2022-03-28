@@ -1,7 +1,7 @@
 <?php
     include("connection.php");
     session_start();
-    $username = $_SESSION["username"] ;
+    $username = $_SESSION["applicant"] ;
     $getDoc = "Select * from document where username = '$username'";
     $resultDoc = $conn->query($getDoc);
     $rowDoc = $resultDoc-> fetch_assoc();
@@ -65,8 +65,8 @@
             <a href="organizationDashboard.php">Dashboard</a>
             <a href="manageOrganization.php">Manage Organization</a>
             <a class="active" href="organizationRecordDisbursement.php">Record Disbursement</a>
-            <a href="#">Organize Appeal</a>
-            <a href="#">Record Contribution</a>
+            <a href="organiseAidAppeal.php">Organize Appeal</a>
+            <a href="recordCon.php">Record Contribution</a>
         </div>
 
     <div class="content" style="padding-top: 100px; text-align:center">
@@ -92,9 +92,9 @@
   </div>
 
   <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Household Income</label>
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Documents</label>
     <div class="col-sm-10">
-    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $_SESSION["householdIncome"] ;?>">
+    <input type="number" step=".01" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $_SESSION["householdIncome"] ;?>">
     </div>
   </div>
 
@@ -111,7 +111,7 @@
         <span class="input-group-text">RM</span>
     </div>
     <div class="col-sm-9">
-      <input type="text" class="form-control" id="cashAmount" name="cashAmount" placeholder="" min="2018-01-01" required>
+      <input type="number" step="0.01" class="form-control" id="cashAmount" name="cashAmount" placeholder="" min="2018-01-01" required>
     </div>
   </div>
 

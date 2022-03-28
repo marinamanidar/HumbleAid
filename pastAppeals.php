@@ -69,7 +69,9 @@
         </thead>
         <tbody>
             <?php
-        $sql = "SELECT * FROM appeal where outcome = 'active' and toDate < CURDATE()";
+        $sqlU = "UPDATE appeal SET outcome='expired' WHERE toDate < CURDATE()";
+        $resultU = mysqli_query($conn,$sqlU);
+        $sql = "SELECT * FROM appeal where outcome = 'disbursed' or toDate < CURDATE() or outcome = 'expired'";
         $result = mysqli_query($conn,$sql);
         while ($row = mysqli_fetch_array($result)) { ?>
             <tr>
