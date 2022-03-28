@@ -50,6 +50,18 @@
   </div>
 </div>
 
+<div class="card text-center">
+  <div class="card-header">
+  </div>
+  <div class="card-body">
+  <div class="card-body">
+    <h5 class="card-title">Donor</h5>
+    <a href="viewAppeal.php" class="btn btn-primary">View Appeals</a>
+    <a href="#" class="btn btn-primary">Donate</a>
+  </div>
+  </div>
+</div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

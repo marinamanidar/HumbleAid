@@ -57,27 +57,29 @@
 <br>
 <br>
 <br>
-<h3 style="text-align: center;">Past Appeals<a class="btn" href="viewAppeal.php" role="button">View Current Appeals</a></h3>
+<h3 style="text-align: center;">Current Appeals<a class="btn" href="pastAppeals.php" role="button">View Past Appeals</a></h3>
 <table id="table" border="1">
         <thead style="background-color: #507daf;">
             <tr class="btn-primary">
                 <th>From Date</th>
                 <th>To Date</th>
                 <th>Description</th>
-                <th>Outcome</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <?php
-        $sql = "SELECT * FROM appeal where outcome = 'active' and toDate < CURDATE()";
+        $sql = "SELECT * FROM appeal where outcome = 'active' and toDate > CURDATE()";
         $result = mysqli_query($conn,$sql);
         while ($row = mysqli_fetch_array($result)) { ?>
             <tr>
-
                 <td><?php echo $row['fromDate'];?></td>
                 <td><?php echo $row['toDate'];?></td>
                 <td><?php echo $row['description'];?></td>
-                <td><?php echo $row['outcome'];?></td>
+                <?php
+                $_SESSION["orgID"] = $row['orgID'];
+                ?>
+                <td><a class="btn" href="viewOrganization.php" role="button">View</a></td>
             </tr>
 
 

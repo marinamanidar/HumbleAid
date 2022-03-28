@@ -1,3 +1,10 @@
+<?php
+   include("connection.php");
+   session_start();
+
+   $username = $_SESSION["username"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,8 +27,8 @@
             <div class="container-fluid">
                 <a class="navbar-brand">Humble Aid </a>
                 <form class="d-flex">
-                    <p style="padding: 0px 50px; text-align:center;"><?php $_SESSION["username"] ?></p>
-                    <button class="btn-logout btn-outline-success" type="submit">Log Out</button>
+                    <p style="padding: 0px 50px; text-align:center;"><?php echo $_SESSION["username"] ?></p>
+                    <a class="btn" href="logout.php" role="button">Log Out</a>
                 </form>
             </div>
         </nav>
@@ -29,15 +36,17 @@
         <!-- The sidebar -->
         <div class="sidebar" style="padding-top: 100px;">
             <a class="active" href="organizationDashboard.php">Dashboard</a>
-            <a href="#news">Add Applicants</a>
-            <a href="#contact">Record Disbursement</a>
-            <a href="#about">Organizae Appeal</a>
-            <a href="#about">Record Contribution</a>
+            <a href="manageOrganization.php">Manage Organization</a>
+            <a href="organizationRecordDisbursement.php">Record Disbursement</a>
+            <a href="#">Organize Appeal</a>
+            <a href="#">Record Contribution</a>
         </div>
 
-        <div class="content">
+        <br>
+        <br>
+        <div class="content" style="padding-top: 100px;">
             <div class="container">
-                
+                <h1>Welcome, <?php echo $username?></h1>
             </div>
         </div>
 

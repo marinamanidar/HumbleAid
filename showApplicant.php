@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include("connection.php");
 
     $k = $_POST['id'];
@@ -12,18 +13,11 @@
 
     if($res -> num_rows > 0){
 ?>
-    <div class="accordion" id="accordionExample">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                View Applicants
-            </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
                 <table>
                 <thead>
-                    <th>Username</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Household Income</th>
                     <th></th>
                 </thead>
                     <tbody>
@@ -34,16 +28,24 @@
 ?>
     <tr>
         <td><?php echo $row['username'];?></td>
-        <td><button type="button" class="btnSelect" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Contribute
-        </button></td>
+        <td><?php echo $row['applicantAddress'];?></td>
+        <td><?php echo $row['householdIncome'];?></td>
+        <?php
+        $_SESSION["username"] = $row['username'];
+        $_SESSION["applicantAddress"] = $row['applicantAddress'];
+        $_SESSION["householdIncome"] = $row['householdIncome'];
+        $_SESSION["appealID"] = $k;
+        ?>
+        <td><a class="btn" href="disbursement.php" role="button">Disbursed</a></td>
     </tr>
     </tbody>
-    
 <?php
     }
     }else{
         echo "<br>";
     }
 ?>
+
+    
+
 

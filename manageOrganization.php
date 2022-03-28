@@ -36,8 +36,7 @@ require_once "manageOrgInformation.php";
             <div class="container-fluid">
                 <a class="navbar-brand">Humble Aid </a>
                 <form class="d-flex">
-                    <p style="padding: 0px 50px; text-align:center;">John</p>
-                    <button class="btn-logout btn-outline-success" type="submit">Log Out</button>
+                    <a class="btn" href="logout.php" role="button">Log Out</a>
                 </form>
             </div>
         </nav>
@@ -46,6 +45,9 @@ require_once "manageOrgInformation.php";
         <div class="sidebar" style="padding-top: 100px;">
             <a href="organizationDashboard.php">Dashboard</a>
             <a class="active" href="manageOrganization.php">Manage Organization</a>
+            <a href="organizationRecordDisbursement.php">Record Disbursement</a>
+            <a href="#">Organize Appeal</a>
+            <a href="#">Record Contribution</a>
         </div>
 
         <div class="content">

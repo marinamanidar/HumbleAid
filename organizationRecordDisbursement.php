@@ -3,11 +3,11 @@
     session_start();
 
     //$_SESSION["orgID"] ="select orgID from organizationrepresentative where username = '".$_SESSION["username"]."'";
-
-    $getRep = "Select * from organizationrep where username = '".$_SESSION["username"]."'";
-    $resultRep = $conn->query($getOrg);
-    $rowRep = $resultOrg-> fetch_assoc();
-    $orgID = $rowRep['orgID'];
+    $username = $_SESSION['username'];
+    $getId = "Select * from organizationrepresentative where username = '$username'";
+    $resultId = $conn->query($getId);
+    $rowId = $resultId-> fetch_assoc();
+    $orgID = $rowId['orgID'];
 
     $getresult = "Select * from appeal where orgID = '$orgID'";
     $result = $conn->query($getresult);
@@ -85,8 +85,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand">Humble Aid </a>
                 <form class="d-flex">
-                    <p style="padding: 0px 50px; text-align:center;">John</p>
-                    <button class="btn-logout btn-outline-success" type="submit">Log Out</button>
+                    <a class="btn" href="logout.php" role="button">Log Out</a>
                 </form>
             </div>
         </nav>
@@ -95,7 +94,9 @@
         <div class="sidebar" style="padding-top: 100px;">
             <a href="organizationDashboard.php">Dashboard</a>
             <a href="manageOrganization.php">Manage Organization</a>
-            <a class="active" href="manageOrganization.php">Record Disbursement</a>
+            <a class="active" href="organizationRecordDisbursement.php">Record Disbursement</a>
+            <a href="#">Organize Appeal</a>
+            <a href="#">Record Contribution</a>
         </div>
 
         <div class="content" style="padding-top: 100px;">
@@ -119,7 +120,7 @@
                     <option selected>Choose Appeal ID</option>
                     <?php
                       $connect = mysqli_connect("localhost","root","","humbleaid");
-                      $appealID = mysqli_query($connect, "SELECT DISTINCT appealID FROM appeal where outcome = 'active' and orgID = '".$_SESSION["orgID"]."'");
+                      $appealID = mysqli_query($connect, "SELECT DISTINCT appealID FROM appeal where outcome = 'active' and orgID = '001'");
                       while ($appealrow = mysqli_fetch_array($appealID)) {
                         $appealno = $appealrow['appealID'];
                         echo "<option value='$appealno'>";
@@ -145,8 +146,7 @@
                 <br>
 
                 <div id="ann">
-                </div>
-
+                </div> 
 
                 <?php
                     }
@@ -158,99 +158,6 @@
 
             </div>
         </div>
-
-        <?php
-            $name = $_COOKIE['uname'];
-            $appeal = $_COOKIE['app'];
-            // Set the expiration date to one hour ago
-            setcookie("uname", "", time() - 3600);
-            setcookie("app", "", time() - 3600);
-            $app = "Select * from applicant where username= '$name'";
-            $getApp = mysqli_query($conn,$app);
-            $rowApp = mysqli_fetch_array($getApp)
-
-        ?>
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Appeal : <?php echo $appeal?></p>
-                <p>Name : <?php echo "$name"?></p>
-                <p>Address : <?php echo $rowApp['applicantAddress'];?></p>
-                <p>Household Income : <?php echo $rowApp['householdIncome'];?></p>
-            </div>
-            <form class="form" method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
-
-            <div class="input-group mb-3">
-            <input type="date" id="date" name="date" class="form-control" />
-            </div>
-
-            <div class="form-outline mb-4">
-                <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">RM</span>
-                </div>
-                <input type="text" class="form-control" id="cashAmount" name="cashAmount" aria-label="Amount" placeholder="1000.00" required>
-            </div>
-            </div>
-
-            <div class="form-group">
-                <textarea class="form-control" id="goods" name="goods" rows="3" placeholder="Rice, Milk Powder .."></textarea>
-            </div>
-            <br>
-            <br>
-
-            <button type="submit" name="btn_logic" id="btn_logic" class="col-12 btn btn-secondary btn-lg btn-block" style="background-color:#507daf ;">Disbursed</button>
-
-            </form>
-            </div>
-        </div>
-        </div>
-    <script>
-   var res = "success";
-</script>
-<?php
-   echo "<script>document.writeln(res);</script>";
-?>
-
-    <script>
-    $(document).ready(function(){
-
-    // code to read selected table row cell data (values).
-    $("#ann").on('click','.btnSelect',function(){
-     // get the current row
-     var currentRow=$(this).closest("tr"); 
-     var uname=currentRow.find("td:eq(0)").html(); // get current row 1st table cell TD value
-     var appealID = document.getElementById("appealID").value;
-     createCookie("uname", uname, "1");
-     createCookie("app", appealID, "1");
-    });
-    });
-
-    function createCookie(name, value, days) {
-    var expires;
-      
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toGMTString();
-    }
-    else {
-        expires = "";
-    }
-
-    document.cookie = escape(name) + "=" + 
-        escape(value) + expires + "; path=/";
-    }
-
-    </script>
-
-
     </body>
 </html>
 

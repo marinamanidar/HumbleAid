@@ -23,7 +23,7 @@
          $_SESSION['username'] = $username;
          $_SESSION['password'] = $password;
          
-         header("location: orgRepDashboard.php");
+         header("location: organizationDashboard.php");
          die;
 
       }else {
