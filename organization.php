@@ -14,7 +14,6 @@ if(isset($_POST['submit'])){
     $query = "INSERT INTO `organization`(`orgID`, `orgName`, `orgAddress`) VALUES (`orgID`, '$organizationname', '$address')";
     $save = mysqli_query($connect, $query);
 
-    
     echo '<script type="text/javascript">';
     echo 'alert("Organization has been added.");';
     echo '</script>';

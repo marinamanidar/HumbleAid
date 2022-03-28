@@ -33,7 +33,7 @@
         $sqlapplicant = "INSERT INTO applicant (username, IDno, applicantAddress, householdIncome, orgName, orgID) VALUES ('$username', '$_POST[IDno]', '$_POST[applicantAddress]', '$_POST[householdIncome]', '$_POST[orgName]', '$orgID')";
         $sqldocument = "INSERT INTO document (filename, description, username) VALUES ('$document', '$_POST[description]', '$username')";
           if($save = mysqli_query($conn, $sqluser) && $save2 = mysqli_query($conn,$sqlapplicant) && $save2 = mysqli_query($conn,$sqldocument)){
-?>
+?> 
             <p>
               <?php 
               echo '<script type="text/javascript">';
@@ -152,8 +152,11 @@
                     <button type="submit" id="register" name="register" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" style="background-color: #507daf;">Register</button>
                   </div>
 
+
                   <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="applicantLogIn.php" class="fw-bold text-body"><u>Login here</u></a></p>
                   
+
+
                 </form>
 
               </div>

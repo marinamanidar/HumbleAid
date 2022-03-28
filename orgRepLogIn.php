@@ -1,7 +1,6 @@
 <?php
    include("connection.php");
    session_start();
- 
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // email and password sent from form 
@@ -77,7 +76,9 @@
                 
                   <button type="submit" name="btn_logic" class="col-12 btn btn-secondary btn-lg btn-block" style="background-color:#507daf ;">Log In</button>
 
-                  <!-- <p class="text-center text-muted mt-5 mb-0">Don't have an account? <a href="orgRep" class="fw-bold text-body"><u>Sign Up</u></a></p> -->
+
+                  <p class="text-center text-muted mt-5 mb-0">Don't have an account? <a href="orgRepRegisterApp.php" class="fw-bold text-body"><u>Sign Up</u></a></p>
+
 
                 </form>
 

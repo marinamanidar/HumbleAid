@@ -24,7 +24,9 @@ require_once "manageOrgInformation.php";
             function text(){
                 var organization = document.getElementById("organization");
                 var displayText = organization.options[organization.selectedIndex].value;
-                document.getElementById("displayID").value = displayText;
+                var displayID = organization.options[organization.selectedIndex].text;
+                document.getElementById("displayName").value = displayText;
+                document.getElementById("displayID").value = displayID;
             }
         </script>
 
@@ -37,6 +39,7 @@ require_once "manageOrgInformation.php";
                 <a class="navbar-brand">Humble Aid </a>
                 <form class="d-flex">
                     <a class="btn" href="logout.php" role="button">Log Out</a>
+                    <button class="btn" type="submit"><a href="index.php" class="fw-bold text-body">Log Out</button>
                 </form>
             </div>
         </nav>
@@ -55,7 +58,7 @@ require_once "manageOrgInformation.php";
             <form class="form" method="POST">
                 <!--Organization ID-->
                 <div class="form-group">
-                    <label class="label">Organization ID:</label>
+                    <label class="label">Organization ID</label>
                     <select class="form-control form_data" name="organization" id="organization" onchange="text();">
                         <option selected hidden value="Select Organization ID">Select Organization ID</option>
                         <?php
@@ -79,13 +82,14 @@ require_once "manageOrgInformation.php";
 
                 <!--admin page display organization ID-->
                 <div class="form-group">
-                    <input type="text" class="form-control" name="orgID" id="displayID" disabled>
+                    <input type="text" class="form-control" name="orgName" id="displayName" disabled>
                 </div>
             </from>
         </div>
         <div  class="manages">
             <form class="form" method="POST">
                 <h2>Add New Organization Representative</h2>
+                <input type="hidden" class="form-control" name="orgID" id="displayID" style="visibility: hidden;">
                 <!--admin page username-->
                 <div class="form-group">
                     <label class="label">Username</label>
@@ -102,7 +106,7 @@ require_once "manageOrgInformation.php";
                 <div class="form-group">
                     <label class="label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" required>
-                    <P class="text-danger"><?php if (isset($error['wrongPatientEmail'])) echo $error['wrongPatientEmail']; ?></p>
+                    <P class="text-danger"><?php if (isset($error['wrongEmail'])) echo $error['wrongEmail']; ?></p>
                 </div>
 
                 <!--admin page mobile no-->
@@ -134,11 +138,11 @@ require_once "manageOrgInformation.php";
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Organization name :</label>
-                                <input type="text" name="organization_name" class="form-control">
+                                <input type="text" name="organization_name" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Address :</label>
-                                <input type="text" name="organizationaddress" class="form-control">
+                                <input type="text" name="organizationaddress" class="form-control" required>
                             </div>
                         </div>
                         <div class="modal-footer">
