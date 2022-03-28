@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $description = $_POST['description'];
     $outcome = "Active";
 
-    $query = "INSERT INTO `appeal`(`appealID`, `fromDate`, `toDate`, `description`, `outcome`, `orgID`, `orgName`, `orgAddress`) VALUES ('appealID', '$fromDate', '$todate', '$description', '$outcome', $orgIDD, '$orgNa', '$orgAdd')";
+    $query = "INSERT INTO `appeal`(`appealID`, `fromDate`, `toDate`, `description`, `outcome`, `orgID`) VALUES ('appealID', '$fromDate', '$todate', '$description', '$outcome', '$orgIDD')";
     $save = mysqli_query($conn, $query);
 
     echo "<script> alert('Aid Appeal Save') </script>";
@@ -95,7 +95,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 <form class="form" method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
                     <h3 id="organization" name="organization" style="text-align: center;"><?php echo $orgNa ?></h3>
                     <input type="hidden" class="form-control" name="orgID" id="displayID" style="visibility: hidden;" value="<?php echo $orgIDD ?>">
-                    <input type="hidden" class="form-control" name="orgID" id="displayID" style="visibility: hidden;" value="<?php echo $orgAdd ?>">
                     <!--organization rep page from date-->
                     <div class="form-group">
                         <label class="label">From Date</label>
