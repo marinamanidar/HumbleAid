@@ -39,18 +39,13 @@ require_once "manageOrgInformation.php";
                 <a class="navbar-brand">Humble Aid </a>
                 <form class="d-flex">
                     <a class="btn" href="logout.php" role="button">Log Out</a>
-                    <button class="btn" type="submit"><a href="index.php" class="fw-bold text-body">Log Out</button>
                 </form>
             </div>
         </nav>
 
         <!-- The sidebar -->
         <div class="sidebar" style="padding-top: 100px;">
-            <a href="organizationDashboard.php">Dashboard</a>
             <a class="active" href="manageOrganization.php">Manage Organization</a>
-            <a href="organizationRecordDisbursement.php">Record Disbursement</a>
-            <a href="#">Organize Appeal</a>
-            <a href="#">Record Contribution</a>
         </div>
 
         <div class="content">

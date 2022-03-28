@@ -17,7 +17,6 @@
   <div class="container-fluid">
     <a class="navbar-brand">Humble Aid </a>
     <form class="d-flex">
-        <p style="margin: 5px; padding: 5px">Applicant</p>
         <button class="btn" type="submit"><a href="index.php" class="fw-bold text-body">Log Out</button>
     </form>
   </div>
