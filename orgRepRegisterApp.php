@@ -81,13 +81,13 @@
 
   <!-- The sidebar -->
 
-<div class="sidebar" style="padding-top: 100px;">
-  <a href="#home">Dashboard</a>
-  <a class="active" href="#news">Add Applicants</a>
-  <a href="#contact">Record Disbursement</a>
-  <a href="#about">Organizae Appeal</a>
-  <a href="#about">Record Contribution</a>
-</div>
+  <div class="sidebar" style="padding-top: 100px;">
+      <a href="organizationDashboard.php">Dashboard</a>
+      <a class="active" href="orgRepRegisterApp.php">Record Applicant</a>
+      <a href="organizationRecordDisbursement.php">Record Disbursement</a>
+      <a href="organiseAidAppeal.php">Organize Appeal</a>
+      <a href="recordCon.php">Record Contribution</a>
+    </div>
 
 <div class="content" style="padding-top: 100px;">
 <h1 class="display-4">Add Aid Applicants</h1>
