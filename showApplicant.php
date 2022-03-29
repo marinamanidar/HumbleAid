@@ -2,6 +2,17 @@
     session_start();
     include("connection.php");
 
+    if(isset($_POST['clicked'])){
+        $username = $_POST['clicked'];
+        $idd = "Select * from applicant where username = '$username'";
+        $Idd = mysqli_query($conn, $idd);
+        $ik = mysqli_fetch_assoc($Idd);
+        $_POST['householdIncome'] = $ik['householdIncome'];
+        $_POST['address']  = $ik['applicantAddress'];
+
+        echo "<script>setTimeout(\"location.href = 'disbursement.php';\",1500);</script>";
+    }
+
     $k = $_POST['id'];
     $k = trim($k);
     $sql = "Select orgID from appeal where appealID= '{$k}'";
@@ -13,34 +24,30 @@
 
     if($res -> num_rows > 0){
 ?>
+            <form method="POST" action="disbursement.php">
                 <table>
                 <thead>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Household Income</th>
+                    <th>Applicants</th>
                     <th></th>
                 </thead>
                     <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
 
 <?php
+    $i = 1;
     while($row = mysqli_fetch_array($res)){
-        $id = $row['IDno'];
 ?>
     <tr>
-        <td><?php echo $row['username'];?></td>
-        <td><?php echo $row['applicantAddress'];?></td>
-        <td><?php echo $row['householdIncome'];?></td>
-        <?php
-        $_SESSION["applicant"] = $row['username'];
-        $_SESSION["applicantAddress"] = $row['applicantAddress'];
-        $_SESSION["householdIncome"] = $row['householdIncome'];
-        $_SESSION["appealID"] = $k;
-        ?>
-        <td><a class="btn" href="disbursement.php" role="button">Disburse Aid</a></td>
+        <td>
+        <input type="text" value="<?=$row['username']?>" name="username[<?=$row['IDno']?>" readonly>
+        </td>
+        <td><button type="submit" name="clicked" value="<?=$row['username']?>">Start</button></td>
     </tr>
     </tbody>
-<?php
-    }
+<?php $i++;} $_SESSION['exam'] = $i;
     }else{
         echo "<br>";
     }

@@ -1,10 +1,13 @@
 <?php
     include("connection.php");
     session_start();
-    $username = $_SESSION["applicant"] ;
+    $username = $_POST['clicked'];
     $getDoc = "Select * from document where username = '$username'";
     $resultDoc = $conn->query($getDoc);
     $rowDoc = $resultDoc-> fetch_assoc();
+    $getApp = "Select * from applicant where username = '$username'";
+    $resultApp = $conn->query($getApp);
+    $rowApp = $resultApp-> fetch_assoc();
     
     if (isset($_POST['register'])) {
         //$upload_image = $_FILES['document']['name'];
@@ -12,8 +15,6 @@
         //move_uploaded_file($_FILES[" document "][" tmp_name "], "$folder".$_FILES[" document "][" name "]);
         //set input into variables
         //$cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
-        $appealID = $_SESSION["appealID"] ;
-        unset($_SESSION['appealID']);
         $comb = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         $shfl = str_shuffle($comb);
         $disbursementID = substr($shfl,0,10);
@@ -76,13 +77,13 @@
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
     <div class="col-sm-10">
-    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $_SESSION["applicant"] ;?>">
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $_POST['clicked']?>">
     </div>
   </div>
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Address</label>
     <div class="col-sm-10">
-    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $_SESSION["applicantAddress"] ;?>">
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $rowApp['applicantAddress'] ;?>">
     </div>
   </div>
   <div class="form-group row">
@@ -95,7 +96,7 @@
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Documents</label>
     <div class="col-sm-10">
-    <input type="number" step=".01" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $_SESSION["householdIncome"] ;?>">
+    <input type="number" step=".01" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $rowApp["householdIncome"] ;?>">
     </div>
   </div>
 
