@@ -21,8 +21,8 @@
         $cashAmount = $_POST['cashAmount'];
         $disbursementDate = $_POST['disbursedDate'];
         $goodsDisbursed = $_POST['goodsDisbursed'];
-        
-        $sqldisbursement = "INSERT INTO disbursement (disbursementID, cashAmount, disbursementDate, goodsDisbursed, username) VALUES ('$disbursementID', '$cashAmount', '$disbursementDate', '$goodsDisbursed', '$user'";
+
+        $sqldisbursement = "INSERT INTO disbursement (disbursementID, cashAmount, disbursementDate, goodsDisbursed, username) VALUES ('$disbursementID', '$cashAmount', '$disbursementDate', '$goodsDisbursed', '$user')";
           if($save = mysqli_query($conn, $sqldisbursement)){
 ?>
             <p>
