@@ -73,6 +73,7 @@
         $resultU = mysqli_query($conn,$sqlU);
         $sql = "SELECT * FROM appeal where outcome = 'disbursed' or toDate < CURDATE() or outcome = 'expired'";
         $result = mysqli_query($conn,$sql);
+        if($result -> num_rows > 0){
         while ($row = mysqli_fetch_array($result)) { ?>
             <tr>
 
@@ -84,6 +85,11 @@
 
 
             <?php }
+        }else{
+            echo '<script type="text/javascript">';
+          echo 'alert("No past appeals!");';
+          echo '</script>';
+        }
         ?>
         </tbody>
     </table>

@@ -71,6 +71,7 @@
             <?php
         $sql = "SELECT * FROM appeal where outcome = 'active' and toDate > CURDATE()";
         $result = mysqli_query($conn,$sql);
+        if($result -> num_rows > 0){
         while ($row = mysqli_fetch_array($result)) { ?>
             <tr>
                 <td><?php echo $row['fromDate'];?></td>
@@ -84,6 +85,11 @@
 
 
             <?php }
+        }else{
+            echo '<script type="text/javascript">';
+          echo 'alert("No current appeals!");';
+          echo '</script>';
+        }
         ?>
         </tbody>
     </table>

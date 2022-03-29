@@ -13,6 +13,7 @@
         //set input into variables
         //$cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
         $appealID = $_SESSION["appealID"] ;
+        unset($_SESSION['appealID']);
         $comb = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         $shfl = str_shuffle($comb);
         $disbursementID = substr($shfl,0,10);
@@ -75,7 +76,7 @@
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
     <div class="col-sm-10">
-    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $_SESSION["username"] ;?>">
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $_SESSION["applicant"] ;?>">
     </div>
   </div>
   <div class="form-group row">

@@ -23,7 +23,8 @@
     $disbursementDate = $_POST['date'];
     $goodsDisbursed = $_POST['goods'];
     
-
+        $sqlU = "UPDATE appeal SET outcome='disbursed' WHERE appealID = '$appealID'";
+        $resultU = mysqli_query($conn,$sqlU);
         //insert disbursement
         $sqldisbursement = "INSERT INTO disbursement (disbursementID, cashAmount, disbursementDate, goodsDisbursed, username, appealID) VALUES ('$disbursementID', '$cashAmount', '$disbursementDate', '$goodsDisbursed', '$_COOKIE[uname]', '$_COOKIE[app]')";
         if($save = mysqli_query($conn, $sqldisbursement)){
