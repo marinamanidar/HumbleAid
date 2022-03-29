@@ -9,11 +9,16 @@
     if($resC -> num_rows > 0){
 ?>
     <thead>
+        <th>Cash Donation</th>
+        <th></th>
+        <th></th>
+    </thead>
+        <tbody>
+    <tr>
         <th>Amount</th>
         <th>Payment Channel</th>
         <th>Reference No</th>
-    </thead>
-        <tbody>
+    </tr>
 
 <?php
     while($rowC = mysqli_fetch_array($resC)){

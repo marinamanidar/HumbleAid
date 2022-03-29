@@ -2,6 +2,12 @@
    include("connection.php");
    session_start();
  
+   if(isset($_POST['clicked'])){
+    $appealID = $_POST['clicked'];
+
+    echo "<script>setTimeout(\"location.href = 'viewOrganization.php';\",1500);</script>";
+}
+
 ?>
 
 <!doctype html>
@@ -58,9 +64,11 @@
 <br>
 <br>
 <h3 style="text-align: center;">Current Appeals<a class="btn" href="pastAppeals.php" role="button">View Past Appeals</a></h3>
-<table id="table" border="1">
+    <form method="POSt" action="viewOrganization.php">
+    <table id="table" border="1">
         <thead style="background-color: #507daf;">
             <tr class="btn-primary">
+                <th>Appeal ID</th>
                 <th>From Date</th>
                 <th>To Date</th>
                 <th>Description</th>
@@ -71,19 +79,31 @@
             <?php
         $sql = "SELECT * FROM appeal where outcome = 'active' and toDate > CURDATE()";
         $result = mysqli_query($conn,$sql);
+        if($result -> num_rows > 0){
+            $i = 1;
         while ($row = mysqli_fetch_array($result)) { ?>
             <tr>
-                <td><?php echo $row['fromDate'];?></td>
-                <td><?php echo $row['toDate'];?></td>
-                <td><?php echo $row['description'];?></td>
-                <?php
-                $_SESSION["orgID"] = $row['orgID'];
-                ?>
-                <td><a class="btn" href="viewOrganization.php" role="button">View</a></td>
+                <td>
+                <input style="border: 0;" type="text" value="<?=$row['appealID']?>" name="appealID[<?=$row['appealID']?>" readonly>
+                </td>
+                <td>
+                <input style="border: 0;" type="text" value="<?=$row['fromDate']?>" name="fromDate[<?=$row['appealID']?>" readonly>
+                </td>
+                <td>
+                <input style="border: 0;" type="text" value="<?=$row['toDate']?>" name="toDate[<?=$row['appealID']?>" readonly>
+                </td>
+                <td>
+                <input style="border: 0;" type="text" value="<?=$row['description']?>" name="description[<?=$row['appealID']?>" readonly>
+                </td>
+                <td><button type="submit" name="clicked" value="<?=$row['appealID']?>">View</button></td>
             </tr>
-
-
-            <?php }
+            </tbody>
+            <?php $i++;}
+        }else{
+            echo '<script type="text/javascript">';
+          echo 'alert("No current appeals!");';
+          echo '</script>';
+        }
         ?>
         </tbody>
     </table>

@@ -2,7 +2,11 @@
     include("connection.php");
     session_start();
 
-    $orgID = $_SESSION["orgID"] ;
+    $appealID = $_POST["clicked"] ;
+    $resultA = "Select * from appeal where appealID= '$appealID'";
+    $resA = mysqli_query($conn,$resultA);
+    $rowA = $resA-> fetch_assoc();
+    $orgID = $rowA['orgID'];
     $result = "Select * from organization where orgID= '$orgID'";
     $res = mysqli_query($conn,$result);
     $rowOrg = $res-> fetch_assoc();

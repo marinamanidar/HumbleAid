@@ -12,11 +12,14 @@
 ?>
 
     <thead>
-        <th>Description</th>
-        <th>Estimated Value</th>
+        <th>Goods</th>
+        <th></th>
     </thead>
         <tbody>
-
+    <tr>
+        <th>Description</th>
+        <th>Estimated Value</th>
+    </tr>
 <?php
     while($row = mysqli_fetch_array($res)){
 ?>
@@ -28,31 +31,6 @@
     
 <?php
     }
-
-    if($resC -> num_rows > 0){
-        ?>
-            <thead>
-                <th>Amount</th>
-                <th>Payment Channel</th>
-                <th>Reference No</th>
-            </thead>
-                <tbody>
-        
-        <?php
-            while($rowC = mysqli_fetch_array($resC)){
-        ?>
-            <tr>
-                <td><?php echo $rowC['amount'];?></td>
-                <td><?php echo $rowC['paymentChannel'];?></td>
-                <td><?php echo $rowC['referenceNo'];?></td>
-            </tr>
-            </tbody>
-            
-        <?php
-            }
-        
-            }
-
 
     }else{
         echo "<br>";

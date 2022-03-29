@@ -1,10 +1,13 @@
 <?php
     include("connection.php");
     session_start();
-    $username = $_SESSION["applicant"] ;
-    $getDoc = "Select * from document where username = '$username'";
+    $user = $_POST['clicked'];
+    $getDoc = "Select * from document where username = '$user'";
     $resultDoc = $conn->query($getDoc);
     $rowDoc = $resultDoc-> fetch_assoc();
+    $getApp = "Select * from applicant where username = '$user'";
+    $resultApp = $conn->query($getApp);
+    $rowApp = $resultApp-> fetch_assoc();
     
     if (isset($_POST['register'])) {
         //$upload_image = $_FILES['document']['name'];
@@ -12,15 +15,14 @@
         //move_uploaded_file($_FILES[" document "][" tmp_name "], "$folder".$_FILES[" document "][" name "]);
         //set input into variables
         //$cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
-        $appealID = $_SESSION["appealID"] ;
         $comb = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         $shfl = str_shuffle($comb);
         $disbursementID = substr($shfl,0,10);
         $cashAmount = $_POST['cashAmount'];
         $disbursementDate = $_POST['disbursedDate'];
         $goodsDisbursed = $_POST['goodsDisbursed'];
-
-        $sqldisbursement = "INSERT INTO `disbursement` (`disbursementID`, `cashAmount`, `disbursementDate`, `goodsDisbursed`, `username`, `appealID`) VALUES ('$disbursementID', '$cashAmount', '$disbursementDate', '$goodsDisbursed', '$username', '$appealID')";
+        
+        $sqldisbursement = "INSERT INTO disbursement (disbursementID, cashAmount, disbursementDate, goodsDisbursed, username) VALUES ('$disbursementID', '$cashAmount', '$disbursementDate', '$goodsDisbursed', '$user'";
           if($save = mysqli_query($conn, $sqldisbursement)){
 ?>
             <p>
@@ -72,16 +74,17 @@
     <div class="content" style="padding-top: 100px; text-align:center">
 
 <form class="form" method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>" enctype="multipart/form-data">
+
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
     <div class="col-sm-10">
-    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $_SESSION["username"] ;?>">
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $_POST['clicked']?>">
     </div>
   </div>
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Address</label>
     <div class="col-sm-10">
-    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $_SESSION["applicantAddress"] ;?>">
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $rowApp['applicantAddress'] ;?>">
     </div>
   </div>
   <div class="form-group row">
@@ -94,7 +97,7 @@
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Documents</label>
     <div class="col-sm-10">
-    <input type="number" step=".01" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $_SESSION["householdIncome"] ;?>">
+    <input type="number" step=".01" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $rowApp["householdIncome"] ;?>">
     </div>
   </div>
 

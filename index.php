@@ -57,7 +57,7 @@
   <div class="card-body">
     <h5 class="card-title">Donor</h5>
     <a href="viewAppeal.php" class="btn btn-primary">View Appeals</a>
-    <a href="#" class="btn btn-primary">Donate</a>
+    <a href="cashDonation.php" class="btn btn-primary">Donate</a>
   </div>
   </div>
 </div>
