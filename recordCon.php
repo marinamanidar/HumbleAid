@@ -38,7 +38,7 @@ while($appealA = mysqli_fetch_assoc($appeals)){
     <head>
     <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Organise Aid Appeal</title>
+        <title>Record Contribution</title>
         <!-- Latest compiled and minified CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -68,7 +68,7 @@ while($appealA = mysqli_fetch_assoc($appeals)){
             <a href="orgRepRegisterApp.php">Record Applicant</a>
             <a href="organizationRecordDisbursement.php">Record Disbursement</a>
             <a href="organiseAidAppeal.php">Organize Appeal</a>
-            <a class="active" href="recordCon.php">Record Contribution</a>
+            <a class="active" href="recordContribution.php">Record Contribution</a>
         </div>
 
         <div class="content">

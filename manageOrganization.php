@@ -38,7 +38,8 @@ require_once "manageOrgInformation.php";
             <div class="container-fluid">
                 <a class="navbar-brand">Humble Aid </a>
                 <form class="d-flex">
-                    <a class="btn" href="logout.php" role="button">Log Out</a>
+                    <p style="padding: 0px 50px; text-align:center;">Admin</p>
+                    <button class="btn" type="submit"><a href="index.php" class="fw-bold text-body">Log Out</button>
                 </form>
             </div>
         </nav>
