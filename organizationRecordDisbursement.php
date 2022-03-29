@@ -14,30 +14,6 @@
     $getOrg = "Select * from organization where orgID = '$orgID'";
     $resultOrg = $conn->query($getOrg);
     $rowOrg = $resultOrg-> fetch_assoc();
-
-    if(isset($_POST['btn_logic'])){
-    $comb = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    $shfl = str_shuffle($comb);
-    $disbursementID = substr($shfl,0,10);
-    $cashAmount = $_POST['cashAmount'];
-    $disbursementDate = $_POST['date'];
-    $goodsDisbursed = $_POST['goods'];
-    
-        $sqlU = "UPDATE appeal SET outcome='disbursed' WHERE appealID = '$appealID'";
-        $resultU = mysqli_query($conn,$sqlU);
-        //insert disbursement
-        $sqldisbursement = "INSERT INTO disbursement (disbursementID, cashAmount, disbursementDate, goodsDisbursed, username, appealID) VALUES ('$disbursementID', '$cashAmount', '$disbursementDate', '$goodsDisbursed', '$_COOKIE[uname]', '$_COOKIE[app]')";
-        if($save = mysqli_query($conn, $sqldisbursement)){
-        ?>
-            <p>
-                <?php 
-                    echo '<script type="text/javascript">';
-                    echo 'alert("Disbursement successfully added!");';
-                    echo '</script>';?>
-            </p>
-        <?php
-        }
-    }
     ?>
 
 <!DOCTYPE html>
@@ -130,6 +106,8 @@
                         }
                     ?>
                 </select>
+
+
                 <br>
                 
 

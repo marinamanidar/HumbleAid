@@ -1,11 +1,11 @@
 <?php
     include("connection.php");
     session_start();
-    $username = $_POST['clicked'];
-    $getDoc = "Select * from document where username = '$username'";
+    $user = $_POST['clicked'];
+    $getDoc = "Select * from document where username = '$user'";
     $resultDoc = $conn->query($getDoc);
     $rowDoc = $resultDoc-> fetch_assoc();
-    $getApp = "Select * from applicant where username = '$username'";
+    $getApp = "Select * from applicant where username = '$user'";
     $resultApp = $conn->query($getApp);
     $rowApp = $resultApp-> fetch_assoc();
     
@@ -21,8 +21,8 @@
         $cashAmount = $_POST['cashAmount'];
         $disbursementDate = $_POST['disbursedDate'];
         $goodsDisbursed = $_POST['goodsDisbursed'];
-
-        $sqldisbursement = "INSERT INTO `disbursement` (`disbursementID`, `cashAmount`, `disbursementDate`, `goodsDisbursed`, `username`, `appealID`) VALUES ('$disbursementID', '$cashAmount', '$disbursementDate', '$goodsDisbursed', '$username', '$appealID')";
+        
+        $sqldisbursement = "INSERT INTO disbursement (disbursementID, cashAmount, disbursementDate, goodsDisbursed, username) VALUES ('$disbursementID', '$cashAmount', '$disbursementDate', '$goodsDisbursed', '$user'";
           if($save = mysqli_query($conn, $sqldisbursement)){
 ?>
             <p>
@@ -74,6 +74,7 @@
     <div class="content" style="padding-top: 100px; text-align:center">
 
 <form class="form" method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>" enctype="multipart/form-data">
+
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
     <div class="col-sm-10">

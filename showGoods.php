@@ -12,11 +12,14 @@
 ?>
 
     <thead>
-        <th>Description</th>
-        <th>Estimated Value</th>
+        <th>Goods</th>
+        <th></th>
     </thead>
         <tbody>
-
+    <tr>
+        <th>Description</th>
+        <th>Estimated Value</th>
+    </tr>
 <?php
     while($row = mysqli_fetch_array($res)){
 ?>

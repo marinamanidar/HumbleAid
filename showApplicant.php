@@ -4,11 +4,7 @@
 
     if(isset($_POST['clicked'])){
         $username = $_POST['clicked'];
-        $idd = "Select * from applicant where username = '$username'";
-        $Idd = mysqli_query($conn, $idd);
-        $ik = mysqli_fetch_assoc($Idd);
-        $_POST['householdIncome'] = $ik['householdIncome'];
-        $_POST['address']  = $ik['applicantAddress'];
+        $k = $_POST['appeal'][$_POST['clicked']];
 
         echo "<script>setTimeout(\"location.href = 'disbursement.php';\",1500);</script>";
     }
@@ -42,12 +38,15 @@
 ?>
     <tr>
         <td>
-        <input type="text" value="<?=$row['username']?>" name="username[<?=$row['IDno']?>" readonly>
+        <input style="border: 0;" type="text" value="<?=$row['username']?>" name="username[<?=$row['IDno']?>" readonly>
         </td>
-        <td><button type="submit" name="clicked" value="<?=$row['username']?>">Start</button></td>
+
+        <input style="visibility: hidden;" type="text" value="<?=$k?>" name="appeal[<?=$row['IDno']?>" readonly>
+
+        <td><button type="submit" name="clicked" value="<?=$row['username']?>">Disburse</button></td>
     </tr>
     </tbody>
-<?php $i++;} $_SESSION['exam'] = $i;
+<?php $i++;}
     }else{
         echo "<br>";
     }
