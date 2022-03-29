@@ -17,9 +17,7 @@ if(isset($_POST['submit'])){
     echo '<script type="text/javascript">';
     echo 'alert("Organization has been added.");';
     echo '</script>';
-    
-   
 }
-header("Location: manageOrganization.php");
+
 ?>
 

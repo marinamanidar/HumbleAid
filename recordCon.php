@@ -68,7 +68,7 @@ while($appealA = mysqli_fetch_assoc($appeals)){
             <a href="orgRepRegisterApp.php">Record Applicant</a>
             <a href="organizationRecordDisbursement.php">Record Disbursement</a>
             <a href="organiseAidAppeal.php">Organize Appeal</a>
-            <a class="active" href="recordCon.php">Record Contribution</a>
+            <a class="active" href="recordContribution.php">Record Contribution</a>
         </div>
 
         <div class="content">

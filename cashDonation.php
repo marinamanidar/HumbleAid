@@ -49,7 +49,6 @@ session_start();
                         <th>Appeal ID</th>
                         <th>Description</th>
                         <th>Organization ID</th>
-                        <th>View</th>
                         <th>Select</th>
                     </thead>
                     <tbody>
@@ -62,7 +61,6 @@ session_start();
                                 <td>$appealA[appealID]</td>
                                 <td>$appealA[description]</td>
                                 <td>$appealA[orgID]</td>
-                                <td><a href='cashContribution.php?appealID=$appealA[appealID]'><button type='button' class='btn btn-primary'>View</button></a></td>
                                 <td><a href='cashContribution.php?appealID=$appealA[appealID]'><button type='button' class='btn btn-primary'>Select</button></a></td>  
                                 </tr>";
                             }
