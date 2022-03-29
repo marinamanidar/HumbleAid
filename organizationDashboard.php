@@ -39,7 +39,7 @@
             <a href="orgRepRegisterApp.php">Record Applicant</a>
             <a href="organizationRecordDisbursement.php">Record Disbursement</a>
             <a href="organiseAidAppeal.php">Organize Appeal</a>
-            <a href="recordCon.php">Record Contribution</a>
+            <a href="recordContribution.php">Record Contribution</a>
         </div>
 
         <br>

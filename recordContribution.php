@@ -55,9 +55,9 @@ $orgNa = $org['orgName'];
         <!-- The sidebar -->
         <div class="sidebar" style="padding-top: 100px;">
             <a href="organizationDashboard.php">Dashboard</a>
-            <a href="orgRepRegisterApp.php">Add Applicants</a>
-            <a href="#">Record Disbursement</a>
-            <a href="organiseAidAppeal.php">Organise Aid Appeals</a>
+            <a href="orgRepRegisterApp.php">Record Applicant</a>
+            <a href="organizationRecordDisbursement.php">Record Disbursement</a>
+            <a href="organiseAidAppeal.php">Organise Appeals</a>
             <a class="active" href="recordContribution.php">Record Contribution</a>
         </div>
 
